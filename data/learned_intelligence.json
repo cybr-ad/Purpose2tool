@@ -1,0 +1,3266 @@
+{
+  "version": "1.0.0",
+  "total_queries_learned": 144,
+  "intents": {
+    "radio forensic": {
+      "query": "radio forensic",
+      "canonical_intent": "Radio Frequency (RF), SDR & EMF Signal Forensics",
+      "domain": "RF_SDR_EMF",
+      "description": "Radio spectrum investigation, SDR demodulation, EMF/TEMPEST radiation eavesdropping, RF protocol reverse engineering.",
+      "mandatory_concepts": [
+        "radio",
+        "rf",
+        "sdr",
+        "signal",
+        "spectrum",
+        "demodulat",
+        "iq",
+        "emf",
+        "tempest",
+        "frequency",
+        "spectrogram",
+        "ism",
+        "baseband",
+        "telemetry",
+        "transceiver",
+        "rtl-sdr",
+        "hackrf",
+        "gnuradio",
+        "urh",
+        "inspectrum",
+        "gqrx",
+        "sdrangel",
+        "satellite"
+      ],
+      "reject_if_missing_mandatory": true,
+      "disqualify_penalty": 0.0,
+      "primary_tools": [
+        "urh",
+        "universal radio hacker",
+        "inspectrum",
+        "tempestsdr",
+        "sigdigger",
+        "sdrangel",
+        "gnuradio",
+        "gqrx",
+        "rtl_433",
+        "gr-gsm",
+        "proxmark3",
+        "dump1090",
+        "satnogs",
+        "satnogs-decoders",
+        "gr-satellites",
+        "fosphor",
+        "redsea",
+        "dsdcc",
+        "kalibrate-rtl",
+        "killerbee",
+        "hackrf"
+      ],
+      "expanded_terms": [
+        "eavesdropping",
+        "spectrogram",
+        "waterfall",
+        "software defined radio",
+        "leakage",
+        "psk",
+        "radio",
+        "sdr",
+        "ask",
+        "rf reverse engineering",
+        "demodulation",
+        "ism band",
+        "fsk",
+        "forensic",
+        "wireless protocol",
+        "iq captures",
+        "electromagnetic",
+        "tempest",
+        "radio frequency"
+      ],
+      "query_count": 25,
+      "learned_at": "2026-11-17T02:39:09.124782",
+      "last_accessed": "2026-11-18T17:06:02.622250",
+      "last_interaction": {
+        "tool_id": "urh",
+        "tool_name": "Universal Radio Hacker",
+        "timestamp": "2026-11-17T10:04:19.082688"
+      }
+    },
+    "soc": {
+      "query": "soc",
+      "canonical_intent": "General Cybersecurity: Soc",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: soc",
+      "mandatory_concepts": [
+        "soc"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "soc"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:17.436694",
+      "last_accessed": "2026-11-17T02:48:17.436703"
+    },
+    "soc ana": {
+      "query": "soc ana",
+      "canonical_intent": "General Cybersecurity: Soc Ana",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: soc ana",
+      "mandatory_concepts": [
+        "soc",
+        "ana"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "soc",
+        "ana"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:17.976553",
+      "last_accessed": "2026-11-17T02:48:17.976563"
+    },
+    "soc anal": {
+      "query": "soc anal",
+      "canonical_intent": "General Cybersecurity: Soc Anal",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: soc anal",
+      "mandatory_concepts": [
+        "soc",
+        "anal"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "soc",
+        "anal"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:18.179077",
+      "last_accessed": "2026-11-17T02:48:18.179088"
+    },
+    "soc analyst t": {
+      "query": "soc analyst t",
+      "canonical_intent": "General Cybersecurity: Soc Analyst T",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: soc analyst t",
+      "mandatory_concepts": [
+        "soc",
+        "analyst"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "soc",
+        "analyst"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:19.519068",
+      "last_accessed": "2026-11-17T02:48:19.519078"
+    },
+    "soc analyst tools": {
+      "query": "soc analyst tools",
+      "canonical_intent": "General Cybersecurity: Soc Analyst Tools",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: soc analyst tools",
+      "mandatory_concepts": [
+        "soc",
+        "analyst",
+        "tools"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "soc",
+        "analyst",
+        "tools"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:22.894358",
+      "last_accessed": "2026-11-17T02:48:22.894369"
+    },
+    "act": {
+      "query": "act",
+      "canonical_intent": "General Cybersecurity: Act",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: act",
+      "mandatory_concepts": [
+        "act"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "act"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:39.024812",
+      "last_accessed": "2026-11-17T13:33:01.904562"
+    },
+    "acti": {
+      "query": "acti",
+      "canonical_intent": "General Cybersecurity: Acti",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: acti",
+      "mandatory_concepts": [
+        "acti"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "acti"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:39.343217",
+      "last_accessed": "2026-11-17T13:33:02.181820"
+    },
+    "active": {
+      "query": "active",
+      "canonical_intent": "General Cybersecurity: Active",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active",
+      "mandatory_concepts": [
+        "active"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T02:48:39.935607",
+      "last_accessed": "2026-11-17T13:33:02.774977"
+    },
+    "active di": {
+      "query": "active di",
+      "canonical_intent": "General Cybersecurity: Active Di",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active di",
+      "mandatory_concepts": [
+        "active",
+        "di"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "di"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:40.632513",
+      "last_accessed": "2026-11-17T13:33:03.912998"
+    },
+    "active dire": {
+      "query": "active dire",
+      "canonical_intent": "General Cybersecurity: Active Dire",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active dire",
+      "mandatory_concepts": [
+        "active",
+        "dire"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "dire"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:41.127657",
+      "last_accessed": "2026-11-17T13:33:04.259036"
+    },
+    "active direc": {
+      "query": "active direc",
+      "canonical_intent": "General Cybersecurity: Active Direc",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direc",
+      "mandatory_concepts": [
+        "active",
+        "direc"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direc"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:41.349381",
+      "last_accessed": "2026-11-17T13:33:04.464227"
+    },
+    "active directo": {
+      "query": "active directo",
+      "canonical_intent": "General Cybersecurity: Active Directo",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active directo",
+      "mandatory_concepts": [
+        "active",
+        "directo"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "directo"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T02:48:41.839478",
+      "last_accessed": "2026-11-17T13:33:05.114785"
+    },
+    "active director": {
+      "query": "active director",
+      "canonical_intent": "General Cybersecurity: Active Director",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active director",
+      "mandatory_concepts": [
+        "active",
+        "director"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "director"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:48:42.197657",
+      "last_accessed": "2026-11-17T02:48:42.197670"
+    },
+    "active directory": {
+      "query": "active directory",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "silver ticket",
+        "domain controller",
+        "ntds.dit",
+        "esc1",
+        "directory",
+        "lsass.exe",
+        "spn",
+        "pass the hash",
+        "pkinit",
+        "tgs",
+        "golden ticket",
+        "active directory",
+        "active",
+        "ntlm"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:48:42.528971",
+      "last_accessed": "2026-11-17T13:33:05.811518"
+    },
+    "nri": {
+      "query": "nri",
+      "canonical_intent": "General Cybersecurity: Nri",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nri",
+      "mandatory_concepts": [
+        "nri"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nri"
+      ],
+      "query_count": 4,
+      "learned_at": "2026-11-17T02:49:35.389824",
+      "last_accessed": "2026-11-18T16:20:03.689868"
+    },
+    "nrich": {
+      "query": "nrich",
+      "canonical_intent": "General Cybersecurity: Nrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich",
+      "mandatory_concepts": [
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [
+        "enrichment-lookup-coordinator",
+        "enrich",
+        "nrich"
+      ],
+      "expanded_terms": [
+        "nrich"
+      ],
+      "query_count": 13,
+      "learned_at": "2026-11-17T02:49:36.049423",
+      "last_accessed": "2026-11-18T16:20:38.198413",
+      "last_interaction": {
+        "tool_id": "live_gl_87913186",
+        "tool_name": "enrichment-lookup-coordinator",
+        "timestamp": "2026-11-17T13:12:45.552864"
+      }
+    },
+    "nrich a": {
+      "query": "nrich a",
+      "canonical_intent": "General Cybersecurity: Nrich A",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich a",
+      "mandatory_concepts": [
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:49:50.836475",
+      "last_accessed": "2026-11-17T02:49:50.836486"
+    },
+    "nrich ac": {
+      "query": "nrich ac",
+      "canonical_intent": "General Cybersecurity: Nrich Ac",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich ac",
+      "mandatory_concepts": [
+        "nrich",
+        "ac"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "ac"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:49:51.184050",
+      "last_accessed": "2026-11-17T02:49:51.184066"
+    },
+    "nrich ,": {
+      "query": "nrich ,",
+      "canonical_intent": "General Cybersecurity: Nrich ,",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich ,",
+      "mandatory_concepts": [
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:49:53.419231",
+      "last_accessed": "2026-11-17T02:49:53.419244"
+    },
+    "nrich , a": {
+      "query": "nrich , a",
+      "canonical_intent": "General Cybersecurity: Nrich , A",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , a",
+      "mandatory_concepts": [
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:49:53.699053",
+      "last_accessed": "2026-11-17T02:49:53.699063"
+    },
+    "nrich , ad tool": {
+      "query": "nrich , ad tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Ad Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , ad tool",
+      "mandatory_concepts": [
+        "nrich",
+        "ad",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "ad",
+        "tool"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T02:49:54.827261",
+      "last_accessed": "2026-11-17T02:50:07.045065"
+    },
+    "nrich , a tool": {
+      "query": "nrich , a tool",
+      "canonical_intent": "General Cybersecurity: Nrich , A Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , a tool",
+      "mandatory_concepts": [
+        "nrich",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:15.505378",
+      "last_accessed": "2026-11-17T02:50:15.505388"
+    },
+    "nrich , ac tool": {
+      "query": "nrich , ac tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Ac Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , ac tool",
+      "mandatory_concepts": [
+        "nrich",
+        "ac",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "ac",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:16.813120",
+      "last_accessed": "2026-11-17T02:50:16.813130"
+    },
+    "nrich , acti tool": {
+      "query": "nrich , acti tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Acti Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , acti tool",
+      "mandatory_concepts": [
+        "nrich",
+        "acti",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "acti",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:17.417708",
+      "last_accessed": "2026-11-17T02:50:17.417718"
+    },
+    "nrich , active  tool": {
+      "query": "nrich , active  tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active  Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active  tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:18.056780",
+      "last_accessed": "2026-11-17T02:50:18.056790"
+    },
+    "nrich , active d tool": {
+      "query": "nrich , active d tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active D Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active d tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:18.309629",
+      "last_accessed": "2026-11-17T02:50:18.309639"
+    },
+    "nrich , active dire tool": {
+      "query": "nrich , active dire tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active Dire Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active dire tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "dire",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "dire",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:18.993361",
+      "last_accessed": "2026-11-17T02:50:18.993371"
+    },
+    "nrich , active di tool": {
+      "query": "nrich , active di tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active Di Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active di tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "di",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "di",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:19.076628",
+      "last_accessed": "2026-11-17T02:50:19.076637"
+    },
+    "nrich , active direc tool": {
+      "query": "nrich , active direc tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active Direc Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active direc tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "direc",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "direc",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:19.202250",
+      "last_accessed": "2026-11-17T02:50:19.202259"
+    },
+    "nrich , active directo tool": {
+      "query": "nrich , active directo tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active Directo Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active directo tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "directo",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "directo",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:19.909250",
+      "last_accessed": "2026-11-17T02:50:19.909260"
+    },
+    "nrich , active director tool": {
+      "query": "nrich , active director tool",
+      "canonical_intent": "General Cybersecurity: Nrich , Active Director Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nrich , active director tool",
+      "mandatory_concepts": [
+        "nrich",
+        "active",
+        "director",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nrich",
+        "active",
+        "director",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T02:50:20.929948",
+      "last_accessed": "2026-11-17T02:50:20.929959"
+    },
+    "nrich , active directory tool": {
+      "query": "nrich , active directory tool",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "silver ticket",
+        "domain controller",
+        "tool",
+        "ntds.dit",
+        "esc1",
+        "directory",
+        "nrich",
+        "lsass.exe",
+        "spn",
+        "pkinit",
+        "tgs",
+        "pass the hash",
+        "golden ticket",
+        "active directory",
+        "active",
+        "ntlm"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T02:50:21.118669",
+      "last_accessed": "2026-11-17T02:50:33.062924"
+    },
+    "nric": {
+      "query": "nric",
+      "canonical_intent": "General Cybersecurity: Nric",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: nric",
+      "mandatory_concepts": [
+        "nric"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "nric"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-17T02:51:51.289658",
+      "last_accessed": "2026-11-17T13:32:26.587135"
+    },
+    "activ": {
+      "query": "activ",
+      "canonical_intent": "General Cybersecurity: Activ",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: activ",
+      "mandatory_concepts": [
+        "activ"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "activ"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T09:55:40.052821",
+      "last_accessed": "2026-11-17T09:55:40.052832"
+    },
+    "active d": {
+      "query": "active d",
+      "canonical_intent": "General Cybersecurity: Active D",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active d",
+      "mandatory_concepts": [
+        "active"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T09:55:41.157191",
+      "last_accessed": "2026-11-17T09:55:41.157202"
+    },
+    "active dir": {
+      "query": "active dir",
+      "canonical_intent": "General Cybersecurity: Active Dir",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active dir",
+      "mandatory_concepts": [
+        "active",
+        "dir"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "dir"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T09:55:41.704393",
+      "last_accessed": "2026-11-17T09:55:41.704405"
+    },
+    "active direct": {
+      "query": "active direct",
+      "canonical_intent": "General Cybersecurity: Active Direct",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direct",
+      "mandatory_concepts": [
+        "active",
+        "direct"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direct"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-17T09:55:43.614084",
+      "last_accessed": "2026-11-17T13:33:04.882158"
+    },
+    "canbus": {
+      "query": "canbus",
+      "canonical_intent": "Automotive Security, CAN Bus & ECU Reverse Engineering",
+      "domain": "AUTOMOTIVE_CANBUS",
+      "description": "Controller Area Network (CAN), OBD-II diagnostic sniffing, ECU firmware extraction, UDS protocol analysis.",
+      "mandatory_concepts": [
+        "can",
+        "canbus",
+        "obd",
+        "ecu",
+        "automotive",
+        "vehicle",
+        "car",
+        "uds",
+        "savvycan"
+      ],
+      "reject_if_missing_mandatory": true,
+      "disqualify_penalty": 0.0,
+      "primary_tools": [
+        "can-utils",
+        "savvycan",
+        "caringcaribou",
+        "scapy-can",
+        "candump",
+        "cansniffer",
+        "socketcand"
+      ],
+      "expanded_terms": [
+        "obd-ii",
+        "vehicle forensics",
+        "automotive reverse engineering",
+        "electronic control unit",
+        "canbus",
+        "controller area network",
+        "can bus"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:04:21.170988",
+      "last_accessed": "2026-11-17T10:04:21.170995"
+    },
+    "graphql": {
+      "query": "graphql",
+      "canonical_intent": "Web Application, API & GraphQL Exploitation",
+      "domain": "WEB_API_GRAPHQL",
+      "description": "GraphQL introspection & injection, API pentesting, SSRF, SQLi, IDOR, JWT tampering, Web App Security.",
+      "mandatory_concepts": [
+        "web",
+        "http",
+        "api",
+        "graphql",
+        "sql",
+        "injection",
+        "xss",
+        "ssrf",
+        "jwt",
+        "rest",
+        "fuzz"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.2,
+      "primary_tools": [
+        "sqlmap",
+        "caido",
+        "zap",
+        "ffuf",
+        "inql",
+        "graphql-cop",
+        "jwt-tool",
+        "nikto",
+        "commix",
+        "wafw00f",
+        "katana",
+        "nuclei"
+      ],
+      "expanded_terms": [
+        "jwt crack",
+        "sql injection",
+        "graphql",
+        "web crawler",
+        "graphql introspection",
+        "ssrf vulnerability",
+        "api security"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:04:25.464063",
+      "last_accessed": "2026-11-17T10:04:25.464070"
+    },
+    "fer": {
+      "query": "fer",
+      "canonical_intent": "General Cybersecurity: Fer",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: fer",
+      "mandatory_concepts": [
+        "fer"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "fer"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:25.998301",
+      "last_accessed": "2026-11-17T10:11:25.998310"
+    },
+    "fero": {
+      "query": "fero",
+      "canonical_intent": "General Cybersecurity: Fero",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: fero",
+      "mandatory_concepts": [
+        "fero"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "fero"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:26.384858",
+      "last_accessed": "2026-11-17T10:11:26.384867"
+    },
+    "ferob": {
+      "query": "ferob",
+      "canonical_intent": "General Cybersecurity: Ferob",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferob",
+      "mandatory_concepts": [
+        "ferob"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferob"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:26.934169",
+      "last_accessed": "2026-11-17T10:11:26.934179"
+    },
+    "ferobu": {
+      "query": "ferobu",
+      "canonical_intent": "General Cybersecurity: Ferobu",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferobu",
+      "mandatory_concepts": [
+        "ferobu"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferobu"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:27.110204",
+      "last_accessed": "2026-11-17T10:11:27.110214"
+    },
+    "ferobus": {
+      "query": "ferobus",
+      "canonical_intent": "General Cybersecurity: Ferobus",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferobus",
+      "mandatory_concepts": [
+        "ferobus"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferobus"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:28.126083",
+      "last_accessed": "2026-11-17T10:11:28.126093"
+    },
+    "ferobust": {
+      "query": "ferobust",
+      "canonical_intent": "General Cybersecurity: Ferobust",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferobust",
+      "mandatory_concepts": [
+        "ferobust"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferobust"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:28.311869",
+      "last_accessed": "2026-11-17T10:11:28.311880"
+    },
+    "ferobuster": {
+      "query": "ferobuster",
+      "canonical_intent": "General Cybersecurity: Ferobuster",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferobuster",
+      "mandatory_concepts": [
+        "ferobuster"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferobuster"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:11:28.705940",
+      "last_accessed": "2026-11-17T10:11:28.705950"
+    },
+    "ferox": {
+      "query": "ferox",
+      "canonical_intent": "General Cybersecurity: Ferox",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: ferox",
+      "mandatory_concepts": [
+        "ferox"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "ferox"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:12:25.929059",
+      "last_accessed": "2026-11-17T10:12:25.929069"
+    },
+    "feroxi": {
+      "query": "feroxi",
+      "canonical_intent": "General Cybersecurity: Feroxi",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxi",
+      "mandatory_concepts": [
+        "feroxi"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxi"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:12:26.606160",
+      "last_accessed": "2026-11-17T10:12:26.606170"
+    },
+    "feroxide": {
+      "query": "feroxide",
+      "canonical_intent": "General Cybersecurity: Feroxide",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide",
+      "mandatory_concepts": [
+        "feroxide"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:12:27.441605",
+      "last_accessed": "2026-11-17T10:12:27.441615"
+    },
+    "feroxide t": {
+      "query": "feroxide t",
+      "canonical_intent": "General Cybersecurity: Feroxide T",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide t",
+      "mandatory_concepts": [
+        "feroxide"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:12:27.634076",
+      "last_accessed": "2026-11-17T10:12:27.634083"
+    },
+    "feroxide tool": {
+      "query": "feroxide tool",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T10:12:28.682246",
+      "last_accessed": "2026-11-17T10:12:41.520749"
+    },
+    "feroxide too": {
+      "query": "feroxide too",
+      "canonical_intent": "General Cybersecurity: Feroxide Too",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide too",
+      "mandatory_concepts": [
+        "feroxide",
+        "too"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "too"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:12:28.682678",
+      "last_accessed": "2026-11-17T10:12:28.682684"
+    },
+    "feroxide tool t": {
+      "query": "feroxide tool t",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool T",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool t",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:13:08.929673",
+      "last_accessed": "2026-11-17T10:13:08.929684"
+    },
+    "feroxide tool too": {
+      "query": "feroxide tool too",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool Too",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool too",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool",
+        "too"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool",
+        "too"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:13:09.357182",
+      "last_accessed": "2026-11-17T10:13:09.357193"
+    },
+    "feroxide tool tool": {
+      "query": "feroxide tool tool",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool tool",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:13:09.578195",
+      "last_accessed": "2026-11-17T10:13:09.578212"
+    },
+    "feroxide tool g": {
+      "query": "feroxide tool g",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool G",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool g",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:13:12.863204",
+      "last_accessed": "2026-11-17T10:13:12.863214"
+    },
+    "feroxide tool git": {
+      "query": "feroxide tool git",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool Git",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool git",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool",
+        "git"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool",
+        "git"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:13:14.101526",
+      "last_accessed": "2026-11-17T10:13:14.101536"
+    },
+    "feroxide tool github": {
+      "query": "feroxide tool github",
+      "canonical_intent": "General Cybersecurity: Feroxide Tool Github",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: feroxide tool github",
+      "mandatory_concepts": [
+        "feroxide",
+        "tool",
+        "github"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "feroxide",
+        "tool",
+        "github"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T10:13:14.655387",
+      "last_accessed": "2026-11-17T10:13:20.775365"
+    },
+    "pwn": {
+      "query": "pwn",
+      "canonical_intent": "General Cybersecurity: Pwn",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: pwn",
+      "mandatory_concepts": [
+        "pwn"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "pwn"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:25.970099",
+      "last_accessed": "2026-11-17T10:28:25.970114"
+    },
+    "pwnw": {
+      "query": "pwnw",
+      "canonical_intent": "General Cybersecurity: Pwnw",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: pwnw",
+      "mandatory_concepts": [
+        "pwnw"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "pwnw"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:26.489602",
+      "last_accessed": "2026-11-17T10:28:26.489609"
+    },
+    "pwnwi": {
+      "query": "pwnwi",
+      "canonical_intent": "General Cybersecurity: Pwnwi",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: pwnwi",
+      "mandatory_concepts": [
+        "pwnwi"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "pwnwi"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:27.077704",
+      "last_accessed": "2026-11-17T10:28:27.077713"
+    },
+    "pwnwin": {
+      "query": "pwnwin",
+      "canonical_intent": "General Cybersecurity: Pwnwin",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: pwnwin",
+      "mandatory_concepts": [
+        "pwnwin"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "pwnwin"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:27.407963",
+      "last_accessed": "2026-11-17T10:28:27.407973"
+    },
+    "pwnwinl": {
+      "query": "pwnwinl",
+      "canonical_intent": "General Cybersecurity: Pwnwinl",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: pwnwinl",
+      "mandatory_concepts": [
+        "pwnwinl"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "pwnwinl"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:28.123714",
+      "last_accessed": "2026-11-17T10:28:28.123724"
+    },
+    "lin": {
+      "query": "lin",
+      "canonical_intent": "General Cybersecurity: Lin",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: lin",
+      "mandatory_concepts": [
+        "lin"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "lin"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:35.398072",
+      "last_accessed": "2026-11-17T10:28:35.398079"
+    },
+    "linw": {
+      "query": "linw",
+      "canonical_intent": "General Cybersecurity: Linw",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linw",
+      "mandatory_concepts": [
+        "linw"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linw"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:35.849623",
+      "last_accessed": "2026-11-17T10:28:35.849630"
+    },
+    "linwi": {
+      "query": "linwi",
+      "canonical_intent": "General Cybersecurity: Linwi",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwi",
+      "mandatory_concepts": [
+        "linwi"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwi"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:36.288118",
+      "last_accessed": "2026-11-17T10:28:36.288125"
+    },
+    "linwin": {
+      "query": "linwin",
+      "canonical_intent": "General Cybersecurity: Linwin",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwin",
+      "mandatory_concepts": [
+        "linwin"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwin"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:37.519903",
+      "last_accessed": "2026-11-17T10:28:37.519910"
+    },
+    "linwinp": {
+      "query": "linwinp",
+      "canonical_intent": "General Cybersecurity: Linwinp",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinp",
+      "mandatory_concepts": [
+        "linwinp"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinp"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:38.286689",
+      "last_accessed": "2026-11-17T10:28:38.286696"
+    },
+    "linwinpw": {
+      "query": "linwinpw",
+      "canonical_intent": "General Cybersecurity: Linwinpw",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpw",
+      "mandatory_concepts": [
+        "linwinpw"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpw"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:38.662774",
+      "last_accessed": "2026-11-17T10:28:38.662791"
+    },
+    "linwinpwn": {
+      "query": "linwinpwn",
+      "canonical_intent": "General Cybersecurity: Linwinpwn",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn",
+      "mandatory_concepts": [
+        "linwinpwn"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:40.308401",
+      "last_accessed": "2026-11-17T10:28:40.308407"
+    },
+    "linwinpwn t": {
+      "query": "linwinpwn t",
+      "canonical_intent": "General Cybersecurity: Linwinpwn T",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn t",
+      "mandatory_concepts": [
+        "linwinpwn"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:42.163798",
+      "last_accessed": "2026-11-17T10:28:42.163806"
+    },
+    "linwinpwn tool": {
+      "query": "linwinpwn tool",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:42.895405",
+      "last_accessed": "2026-11-17T10:28:42.895411"
+    },
+    "linwinpwn tool f": {
+      "query": "linwinpwn tool f",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool F",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool f",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:52.887309",
+      "last_accessed": "2026-11-17T10:28:52.887316"
+    },
+    "linwinpwn tool fr": {
+      "query": "linwinpwn tool fr",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool Fr",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool fr",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "fr"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "fr"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:53.106721",
+      "last_accessed": "2026-11-17T10:28:53.106729"
+    },
+    "linwinpwn tool fro": {
+      "query": "linwinpwn tool fro",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool Fro",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool fro",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "fro"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "fro"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:53.441638",
+      "last_accessed": "2026-11-17T10:28:53.441644"
+    },
+    "linwinpwn tool from": {
+      "query": "linwinpwn tool from",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:53.921150",
+      "last_accessed": "2026-11-17T10:28:53.921157"
+    },
+    "linwinpwn tool from g": {
+      "query": "linwinpwn tool from g",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From G",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from g",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:54.689850",
+      "last_accessed": "2026-11-17T10:28:54.689859"
+    },
+    "linwinpwn tool from gi": {
+      "query": "linwinpwn tool from gi",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From Gi",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from gi",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "gi"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "gi"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:54.842620",
+      "last_accessed": "2026-11-17T10:28:54.842625"
+    },
+    "linwinpwn tool from git": {
+      "query": "linwinpwn tool from git",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From Git",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from git",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "git"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "git"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:55.188962",
+      "last_accessed": "2026-11-17T10:28:55.188969"
+    },
+    "linwinpwn tool from githu": {
+      "query": "linwinpwn tool from githu",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From Githu",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from githu",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "githu"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "githu"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T10:28:55.661491",
+      "last_accessed": "2026-11-17T10:28:55.661498"
+    },
+    "linwinpwn tool from github": {
+      "query": "linwinpwn tool from github",
+      "canonical_intent": "General Cybersecurity: Linwinpwn Tool From Github",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: linwinpwn tool from github",
+      "mandatory_concepts": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "github"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "linwinpwn",
+        "tool",
+        "from",
+        "github"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T10:28:55.897740",
+      "last_accessed": "2026-11-17T10:29:05.613105"
+    },
+    "fir": {
+      "query": "fir",
+      "canonical_intent": "General Cybersecurity: Fir",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: fir",
+      "mandatory_concepts": [
+        "fir"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "fir"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:20.047964",
+      "last_accessed": "2026-11-17T12:40:20.047973"
+    },
+    "firo": {
+      "query": "firo",
+      "canonical_intent": "General Cybersecurity: Firo",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: firo",
+      "mandatory_concepts": [
+        "firo"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "firo"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:20.839089",
+      "last_accessed": "2026-11-17T12:40:20.839096"
+    },
+    "firov": {
+      "query": "firov",
+      "canonical_intent": "General Cybersecurity: Firov",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: firov",
+      "mandatory_concepts": [
+        "firov"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "firov"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:21.323404",
+      "last_accessed": "2026-11-17T12:40:21.323410"
+    },
+    "firob": {
+      "query": "firob",
+      "canonical_intent": "General Cybersecurity: Firob",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: firob",
+      "mandatory_concepts": [
+        "firob"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "firob"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:23.340657",
+      "last_accessed": "2026-11-17T12:40:23.340664"
+    },
+    "firobuster": {
+      "query": "firobuster",
+      "canonical_intent": "General Cybersecurity: Firobuster",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: firobuster",
+      "mandatory_concepts": [
+        "firobuster"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "firobuster"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-17T12:40:24.262277",
+      "last_accessed": "2026-11-17T12:40:24.864901"
+    },
+    "bru": {
+      "query": "bru",
+      "canonical_intent": "General Cybersecurity: Bru",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: bru",
+      "mandatory_concepts": [
+        "bru"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "bru"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:54.364343",
+      "last_accessed": "2026-11-17T12:40:54.364350"
+    },
+    "brut": {
+      "query": "brut",
+      "canonical_intent": "General Cybersecurity: Brut",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: brut",
+      "mandatory_concepts": [
+        "brut"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "brut"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:54.758440",
+      "last_accessed": "2026-11-17T12:40:54.758446"
+    },
+    "dire": {
+      "query": "dire",
+      "canonical_intent": "General Cybersecurity: Dire",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: dire",
+      "mandatory_concepts": [
+        "dire"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "dire"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:58.076198",
+      "last_accessed": "2026-11-17T12:40:58.076206"
+    },
+    "direc": {
+      "query": "direc",
+      "canonical_intent": "General Cybersecurity: Direc",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: direc",
+      "mandatory_concepts": [
+        "direc"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "direc"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:58.369381",
+      "last_accessed": "2026-11-17T12:40:58.369387"
+    },
+    "direct": {
+      "query": "direct",
+      "canonical_intent": "General Cybersecurity: Direct",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: direct",
+      "mandatory_concepts": [
+        "direct"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "direct"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:58.633123",
+      "last_accessed": "2026-11-17T12:40:58.633130"
+    },
+    "directo": {
+      "query": "directo",
+      "canonical_intent": "General Cybersecurity: Directo",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directo",
+      "mandatory_concepts": [
+        "directo"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directo"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:59.024397",
+      "last_accessed": "2026-11-17T12:40:59.024404"
+    },
+    "directory": {
+      "query": "directory",
+      "canonical_intent": "General Cybersecurity: Directory",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory",
+      "mandatory_concepts": [
+        "directory"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:40:59.681314",
+      "last_accessed": "2026-11-17T12:40:59.681320"
+    },
+    "directory b": {
+      "query": "directory b",
+      "canonical_intent": "General Cybersecurity: Directory B",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory b",
+      "mandatory_concepts": [
+        "directory"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:00.181459",
+      "last_accessed": "2026-11-17T12:41:00.181466"
+    },
+    "directory br": {
+      "query": "directory br",
+      "canonical_intent": "General Cybersecurity: Directory Br",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory br",
+      "mandatory_concepts": [
+        "directory",
+        "br"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "br"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:00.494622",
+      "last_accessed": "2026-11-17T12:41:00.494629"
+    },
+    "directory bru": {
+      "query": "directory bru",
+      "canonical_intent": "General Cybersecurity: Directory Bru",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory bru",
+      "mandatory_concepts": [
+        "directory",
+        "bru"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "bru"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:01.030283",
+      "last_accessed": "2026-11-17T12:41:01.030302"
+    },
+    "directory brut": {
+      "query": "directory brut",
+      "canonical_intent": "General Cybersecurity: Directory Brut",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brut",
+      "mandatory_concepts": [
+        "directory",
+        "brut"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brut"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:01.396630",
+      "last_accessed": "2026-11-17T12:41:01.396646"
+    },
+    "directory brutf": {
+      "query": "directory brutf",
+      "canonical_intent": "General Cybersecurity: Directory Brutf",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brutf",
+      "mandatory_concepts": [
+        "directory",
+        "brutf"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brutf"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:01.917983",
+      "last_accessed": "2026-11-17T12:41:01.917990"
+    },
+    "directory brutfo": {
+      "query": "directory brutfo",
+      "canonical_intent": "General Cybersecurity: Directory Brutfo",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brutfo",
+      "mandatory_concepts": [
+        "directory",
+        "brutfo"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brutfo"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:02.247001",
+      "last_accessed": "2026-11-17T12:41:02.247009"
+    },
+    "directory brutfor": {
+      "query": "directory brutfor",
+      "canonical_intent": "General Cybersecurity: Directory Brutfor",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brutfor",
+      "mandatory_concepts": [
+        "directory",
+        "brutfor"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brutfor"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:02.598514",
+      "last_accessed": "2026-11-17T12:41:02.598521"
+    },
+    "directory brutforc": {
+      "query": "directory brutforc",
+      "canonical_intent": "General Cybersecurity: Directory Brutforc",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brutforc",
+      "mandatory_concepts": [
+        "directory",
+        "brutforc"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brutforc"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:02.885776",
+      "last_accessed": "2026-11-17T12:41:02.885783"
+    },
+    "directory brutforce": {
+      "query": "directory brutforce",
+      "canonical_intent": "General Cybersecurity: Directory Brutforce",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: directory brutforce",
+      "mandatory_concepts": [
+        "directory",
+        "brutforce"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "directory",
+        "brutforce"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-17T12:41:03.070794",
+      "last_accessed": "2026-11-17T12:41:06.365788"
+    },
+    "active direco": {
+      "query": "active direco",
+      "canonical_intent": "General Cybersecurity: Active Direco",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direco",
+      "mandatory_concepts": [
+        "active",
+        "direco"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direco"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:37.063144",
+      "last_accessed": "2026-11-17T12:41:37.063151"
+    },
+    "active direcoty": {
+      "query": "active direcoty",
+      "canonical_intent": "General Cybersecurity: Active Direcoty",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcoty",
+      "mandatory_concepts": [
+        "active",
+        "direcoty"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcoty"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:41.035112",
+      "last_accessed": "2026-11-17T12:41:41.035119"
+    },
+    "active direcory": {
+      "query": "active direcory",
+      "canonical_intent": "General Cybersecurity: Active Direcory",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory",
+      "mandatory_concepts": [
+        "active",
+        "direcory"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:42.936863",
+      "last_accessed": "2026-11-17T12:41:42.936870"
+    },
+    "active direcory tool": {
+      "query": "active direcory tool",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:44.278983",
+      "last_accessed": "2026-11-17T12:41:44.278991"
+    },
+    "active direcory tool a": {
+      "query": "active direcory tool a",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool A",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool a",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:45.462880",
+      "last_accessed": "2026-11-17T12:41:45.462887"
+    },
+    "active direcory tool au": {
+      "query": "active direcory tool au",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Au",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool au",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "au"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "au"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:45.689123",
+      "last_accessed": "2026-11-17T12:41:45.689133"
+    },
+    "active direcory tool aut": {
+      "query": "active direcory tool aut",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Aut",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool aut",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "aut"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "aut"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:45.946551",
+      "last_accessed": "2026-11-17T12:41:45.946558"
+    },
+    "active direcory tool auto": {
+      "query": "active direcory tool auto",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Auto",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool auto",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "auto"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "auto"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:46.254216",
+      "last_accessed": "2026-11-17T12:41:46.254228"
+    },
+    "active direcory tool automa": {
+      "query": "active direcory tool automa",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Automa",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool automa",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "automa"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "automa"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:46.632151",
+      "last_accessed": "2026-11-17T12:41:46.632158"
+    },
+    "active direcory tool automat": {
+      "query": "active direcory tool automat",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Automat",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool automat",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "automat"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "automat"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:46.916315",
+      "last_accessed": "2026-11-17T12:41:46.916322"
+    },
+    "active direcory tool automati": {
+      "query": "active direcory tool automati",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Automati",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool automati",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "automati"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "automati"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T12:41:48.430877",
+      "last_accessed": "2026-11-17T12:41:48.430884"
+    },
+    "active direcory tool automatic": {
+      "query": "active direcory tool automatic",
+      "canonical_intent": "General Cybersecurity: Active Direcory Tool Automatic",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: active direcory tool automatic",
+      "mandatory_concepts": [
+        "active",
+        "direcory",
+        "tool",
+        "automatic"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "active",
+        "direcory",
+        "tool",
+        "automatic"
+      ],
+      "query_count": 7,
+      "learned_at": "2026-11-17T12:41:48.878340",
+      "last_accessed": "2026-11-17T13:05:08.771037"
+    },
+    "enrichment": {
+      "query": "enrichment",
+      "canonical_intent": "General Cybersecurity: Enrichment",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: enrichment",
+      "mandatory_concepts": [
+        "enrichment"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "enrichment"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-17T13:23:42.165102",
+      "last_accessed": "2026-11-17T13:29:43.175289"
+    },
+    "luaagi": {
+      "query": "luaagi",
+      "canonical_intent": "General Cybersecurity: Luaagi",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: luaagi",
+      "mandatory_concepts": [
+        "luaagi"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "luaagi"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T13:29:53.106104",
+      "last_accessed": "2026-11-17T13:29:53.106110"
+    },
+    "luamemcached": {
+      "query": "luamemcached",
+      "canonical_intent": "General Cybersecurity: Luamemcached",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: luamemcached",
+      "mandatory_concepts": [
+        "luamemcached"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "luamemcached"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T13:29:56.353402",
+      "last_accessed": "2026-11-17T13:29:56.353410"
+    },
+    "active directory c": {
+      "query": "active directory c",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "crackmapexec-pingcastle",
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "active directory",
+        "active",
+        "golden ticket",
+        "silver ticket",
+        "pass the hash",
+        "lsass.exe",
+        "ntlm",
+        "tgs",
+        "domain controller",
+        "spn",
+        "ntds.dit",
+        "directory",
+        "esc1",
+        "pkinit"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T13:33:08.945546",
+      "last_accessed": "2026-11-17T13:33:08.945554"
+    },
+    "active directory cv": {
+      "query": "active directory cv",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "crackmapexec-pingcastle",
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "active directory",
+        "active",
+        "cv",
+        "golden ticket",
+        "silver ticket",
+        "pass the hash",
+        "lsass.exe",
+        "ntlm",
+        "tgs",
+        "domain controller",
+        "spn",
+        "ntds.dit",
+        "directory",
+        "esc1",
+        "pkinit"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-17T13:33:09.259674",
+      "last_accessed": "2026-11-17T13:33:09.259737"
+    },
+    "active directory cve": {
+      "query": "active directory cve",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "crackmapexec-pingcastle",
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "active directory",
+        "active",
+        "golden ticket",
+        "cve",
+        "silver ticket",
+        "pass the hash",
+        "lsass.exe",
+        "ntlm",
+        "tgs",
+        "domain controller",
+        "spn",
+        "ntds.dit",
+        "directory",
+        "esc1",
+        "pkinit"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-17T13:33:09.633571",
+      "last_accessed": "2026-11-17T13:33:22.399901",
+      "last_interaction": {
+        "tool_id": "ba_crackmapexec-pingcastle",
+        "tool_name": "crackmapexec-pingcastle",
+        "timestamp": "2026-11-17T13:33:49.980811"
+      }
+    },
+    "shnrich": {
+      "query": "shnrich",
+      "canonical_intent": "General Cybersecurity: Shnrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shnrich",
+      "mandatory_concepts": [
+        "shnrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shnrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:26.820175",
+      "last_accessed": "2026-11-18T16:19:26.820183"
+    },
+    "shonrich": {
+      "query": "shonrich",
+      "canonical_intent": "General Cybersecurity: Shonrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shonrich",
+      "mandatory_concepts": [
+        "shonrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shonrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:27.049000",
+      "last_accessed": "2026-11-18T16:19:27.049007"
+    },
+    "shownrich": {
+      "query": "shownrich",
+      "canonical_intent": "General Cybersecurity: Shownrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shownrich",
+      "mandatory_concepts": [
+        "shownrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shownrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:28.762300",
+      "last_accessed": "2026-11-18T16:19:28.762308"
+    },
+    "showdan nrich": {
+      "query": "showdan nrich",
+      "canonical_intent": "General Cybersecurity: Showdan Nrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: showdan nrich",
+      "mandatory_concepts": [
+        "showdan",
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "showdan",
+        "nrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:30.065952",
+      "last_accessed": "2026-11-18T16:19:30.065958"
+    },
+    "radio forensics": {
+      "query": "radio forensics",
+      "canonical_intent": "Radio Frequency (RF), SDR & EMF Signal Forensics",
+      "domain": "RF_SDR_EMF",
+      "description": "Radio spectrum investigation, SDR demodulation, EMF/TEMPEST radiation eavesdropping, RF protocol reverse engineering.",
+      "mandatory_concepts": [
+        "radio",
+        "rf",
+        "sdr",
+        "signal",
+        "spectrum",
+        "demodulat",
+        "iq",
+        "emf",
+        "tempest",
+        "frequency",
+        "spectrogram",
+        "ism",
+        "baseband",
+        "telemetry",
+        "transceiver",
+        "rtl-sdr",
+        "hackrf",
+        "gnuradio",
+        "urh",
+        "inspectrum",
+        "gqrx",
+        "sdrangel",
+        "satellite"
+      ],
+      "reject_if_missing_mandatory": true,
+      "disqualify_penalty": 0.0,
+      "primary_tools": [
+        "urh",
+        "universal radio hacker",
+        "inspectrum",
+        "tempestsdr",
+        "sigdigger",
+        "sdrangel",
+        "gnuradio",
+        "gqrx",
+        "rtl_433",
+        "gr-gsm",
+        "proxmark3",
+        "dump1090",
+        "satnogs",
+        "satnogs-decoders",
+        "gr-satellites",
+        "fosphor",
+        "redsea",
+        "dsdcc",
+        "kalibrate-rtl",
+        "killerbee",
+        "hackrf"
+      ],
+      "expanded_terms": [
+        "software defined radio",
+        "electromagnetic",
+        "forensics",
+        "tempest",
+        "radio frequency",
+        "wireless protocol",
+        "leakage",
+        "fsk",
+        "ask",
+        "radio",
+        "spectrogram",
+        "ism band",
+        "demodulation",
+        "waterfall",
+        "psk",
+        "iq captures",
+        "sdr",
+        "eavesdropping",
+        "rf reverse engineering"
+      ],
+      "query_count": 7,
+      "learned_at": "2026-11-18T16:50:06.584316",
+      "last_accessed": "2026-11-18T17:22:05.893155"
+    },
+    "bbot": {
+      "query": "bbot",
+      "canonical_intent": "General Cybersecurity: Bbot",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: bbot",
+      "mandatory_concepts": [
+        "bbot"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "bbot"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-18T17:18:16.559977",
+      "last_accessed": "2026-11-18T17:18:18.413300"
+    },
+    "aut": {
+      "query": "aut",
+      "canonical_intent": "General Cybersecurity: Aut",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: aut",
+      "mandatory_concepts": [
+        "aut"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "aut"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:30.952650",
+      "last_accessed": "2026-11-18T17:18:30.952657"
+    },
+    "auto": {
+      "query": "auto",
+      "canonical_intent": "General Cybersecurity: Auto",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: auto",
+      "mandatory_concepts": [
+        "auto"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "auto"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:31.231929",
+      "last_accessed": "2026-11-18T17:18:31.231936"
+    },
+    "automa": {
+      "query": "automa",
+      "canonical_intent": "General Cybersecurity: Automa",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automa",
+      "mandatory_concepts": [
+        "automa"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automa"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:31.815813",
+      "last_accessed": "2026-11-18T17:18:31.815825"
+    },
+    "automat": {
+      "query": "automat",
+      "canonical_intent": "General Cybersecurity: Automat",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automat",
+      "mandatory_concepts": [
+        "automat"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automat"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:32.024190",
+      "last_accessed": "2026-11-18T17:18:32.024197"
+    },
+    "automated": {
+      "query": "automated",
+      "canonical_intent": "General Cybersecurity: Automated",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated",
+      "mandatory_concepts": [
+        "automated"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:32.493845",
+      "last_accessed": "2026-11-18T17:18:32.493855"
+    },
+    "automated vap": {
+      "query": "automated vap",
+      "canonical_intent": "General Cybersecurity: Automated Vap",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vap",
+      "mandatory_concepts": [
+        "automated",
+        "vap"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vap"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:35.817957",
+      "last_accessed": "2026-11-18T17:18:35.817966"
+    },
+    "automated vapy": {
+      "query": "automated vapy",
+      "canonical_intent": "General Cybersecurity: Automated Vapy",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vapy",
+      "mandatory_concepts": [
+        "automated",
+        "vapy"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vapy"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:35.944916",
+      "last_accessed": "2026-11-18T17:18:35.944921"
+    },
+    "automated vapt": {
+      "query": "automated vapt",
+      "canonical_intent": "General Cybersecurity: Automated Vapt",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vapt",
+      "mandatory_concepts": [
+        "automated",
+        "vapt"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vapt"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-18T17:18:36.544965",
+      "last_accessed": "2026-11-18T17:19:56.962979"
+    },
+    "net": {
+      "query": "net",
+      "canonical_intent": "General Cybersecurity: Net",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: net",
+      "mandatory_concepts": [
+        "net"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "net"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:21:38.538541",
+      "last_accessed": "2026-11-18T17:21:38.538547"
+    },
+    "networ": {
+      "query": "networ",
+      "canonical_intent": "General Cybersecurity: Networ",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: networ",
+      "mandatory_concepts": [
+        "networ"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "networ"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:21:39.385908",
+      "last_accessed": "2026-11-18T17:21:39.385915"
+    },
+    "network": {
+      "query": "network",
+      "canonical_intent": "General Cybersecurity: Network",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: network",
+      "mandatory_concepts": [
+        "network"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "network"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-18T17:21:40.549715",
+      "last_accessed": "2026-11-18T17:21:41.617535"
+    },
+    "man": {
+      "query": "man",
+      "canonical_intent": "General Cybersecurity: Man",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: man",
+      "mandatory_concepts": [
+        "man"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "man"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:31:38.514667",
+      "last_accessed": "2026-11-18T17:31:38.514675"
+    },
+    "manrt": {
+      "query": "manrt",
+      "canonical_intent": "General Cybersecurity: Manrt",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: manrt",
+      "mandatory_concepts": [
+        "manrt"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "manrt"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:31:39.151664",
+      "last_accessed": "2026-11-18T17:31:39.151671"
+    },
+    "manrta": {
+      "query": "manrta",
+      "canonical_intent": "General Cybersecurity: Manrta",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: manrta",
+      "mandatory_concepts": [
+        "manrta"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "manrta"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:31:39.397171",
+      "last_accessed": "2026-11-18T17:31:39.397178"
+    },
+    "dump lsass": {
+      "query": "dump lsass",
+      "canonical_intent": "Active Directory, Kerberos & Credential Extraction",
+      "domain": "ACTIVE_DIRECTORY_CREDENTIALS",
+      "description": "NTDS.dit dumping, LSASS extraction, Kerberoasting, AS-REP roasting, AD CS certificate escalation, Pass-the-Hash.",
+      "mandatory_concepts": [
+        "active directory",
+        "ntds",
+        "lsass",
+        "kerberos",
+        "ad cs",
+        "certificate",
+        "ticket",
+        "impacket",
+        "secretsdump",
+        "mimikatz",
+        "rubeus",
+        "certipy",
+        "bloodhound"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 0.1,
+      "primary_tools": [
+        "impacket",
+        "secretsdump",
+        "certipy",
+        "certify",
+        "rubeus",
+        "mimikatz",
+        "bloodhound",
+        "netexec",
+        "crackmapexec",
+        "nanodump",
+        "lsassy",
+        "pypykatz",
+        "procdump"
+      ],
+      "expanded_terms": [
+        "dump",
+        "lsass",
+        "lsass.exe",
+        "pass the hash",
+        "tgs",
+        "spn",
+        "golden ticket",
+        "silver ticket",
+        "ntds.dit",
+        "esc1",
+        "pkinit",
+        "ntlm",
+        "domain controller",
+        "active directory"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:31:41.186490",
+      "last_accessed": "2026-11-18T17:31:41.186497"
+    },
+    "manr": {
+      "query": "manr",
+      "canonical_intent": "General Cybersecurity: Manr",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: manr",
+      "mandatory_concepts": [
+        "manr"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "manr"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:31:44.665033",
+      "last_accessed": "2026-11-18T17:31:44.665039"
+    },
+    "mantra": {
+      "query": "mantra",
+      "canonical_intent": "General Cybersecurity: Mantra",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: mantra",
+      "mandatory_concepts": [
+        "mantra"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [
+        "mantra"
+      ],
+      "expanded_terms": [
+        "mantra"
+      ],
+      "query_count": 3,
+      "learned_at": "2026-11-18T17:31:46.802527",
+      "last_accessed": "2026-11-18T17:32:19.470250",
+      "last_interaction": {
+        "tool_id": "live_gh_kadirahq_mantra",
+        "tool_name": "mantra",
+        "timestamp": "2026-11-18T17:32:56.306787"
+      }
+    }
+  }
+}
