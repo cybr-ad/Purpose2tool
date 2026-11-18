@@ -417,14 +417,9 @@ class PersistentSearchIntelligence:
         has_domain_affinity = False
         if mandatory_concepts:
             for mc in mandatory_concepts:
-                if len(mc) <= 3:
-                    if re.search(r'\b' + re.escape(mc) + r'\b', full_text):
-                        has_domain_affinity = True
-                        break
-                else:
-                    if mc in full_text:
-                        has_domain_affinity = True
-                        break
+                if re.search(r'\b' + re.escape(mc) + r'\b', full_text):
+                    has_domain_affinity = True
+                    break
 
         # If a domain requires mandatory concept presence and tool has NONE, disqualify!
         if reject_if_missing and not has_domain_affinity:
@@ -441,28 +436,31 @@ class PersistentSearchIntelligence:
                 score += 8000.0
                 is_primary = True
                 break
-            elif pt_clean in name:
+            elif re.search(r'\b' + re.escape(pt_clean) + r'\b', name):
                 score += 4000.0
                 is_primary = True
                 break
 
         # 3. Exact query matching
         clean_q = intent.get("query", "").lower().strip()
-        if clean_q in name:
+        if clean_q == name:
+            score += 5000.0
+        elif re.search(r'\b' + re.escape(clean_q) + r'\b', name):
             score += 3500.0
-        elif clean_q in purpose:
+        elif re.search(r'\b' + re.escape(clean_q) + r'\b', purpose):
             score += 1500.0
 
-        # 4. Multi-token match
-        matched_tokens = sum(1 for t in tokens if t in full_text)
+        # 4. Multi-token match with boundary precision
+        matched_tokens = sum(1 for t in tokens if re.search(r'\b' + re.escape(t) + r'\b', full_text))
         if len(tokens) > 1 and matched_tokens == len(tokens):
             score += 1200.0
         elif matched_tokens > 0:
             score += matched_tokens * 200.0
 
-        # 5. Expanded concepts & keywords
+        # 5. Expanded concepts & keywords with boundary protection
         for term in intent.get("expanded_terms", []):
-            if len(term) > 3 and term in full_text:
+            if len(term) > 3 and re.search(r'\b' + re.escape(term) + r'\b', full_text):
+                score += 45.0
                 score += 45.0
 
         # 6. Quality & Stars traction
@@ -486,44 +484,40 @@ class PersistentSearchIntelligence:
         if not target_name:
             return (0.0, "NONE")
 
-        target = target_name.lower().strip()
+        target = re.sub(r'^[\'"\`\s]+|[\'"\`\s]+$', '', target_name).lower().strip()
         name = (tool.get("name") or "").lower().strip()
         repo_url = (tool.get("repo_url") or "").lower().strip()
         category = (tool.get("category") or "").lower().strip()
         purpose = (tool.get("purpose_summary") or "").lower().strip()
         full_text = f"{name} {tool.get('tagline', '').lower()} {purpose} {category} {repo_url}"
 
-        # 1. Exact Name Match
+        # 1. Exact Name Match (Absolute Priority Over All Other Criteria)
         if name == target or repo_url.endswith("/" + target) or f"/{target}." in repo_url:
-            return (18000.0, "EXACT_MATCH")
+            return (50000.0, "EXACT_MATCH")
 
-        # 2. Derivative / Ecosystem tool (e.g. nmap-formatter, impacket-scripts)
+        # 2. Derivative / Ecosystem tool (e.g. nrich-cli, nmap-formatter, impacket-scripts)
         if name.startswith(target + "-") or name.startswith(target + "_") or name.endswith("-" + target):
-            return (10000.0, "DERIVATIVE")
+            return (15000.0, "DERIVATIVE")
 
         # 3. Known Curated Alternatives
         curated_alts = CYBER_TOOL_ALTERNATIVES.get(target, [])
         for alt in curated_alts:
             alt_clean = alt.lower()
             if name == alt_clean or repo_url.endswith("/" + alt_clean) or f"/{alt_clean}." in repo_url:
-                return (8500.0, "CURATED_ALTERNATIVE")
+                return (12000.0, "CURATED_ALTERNATIVE")
             elif alt_clean in name:
-                return (6000.0, "SIMILAR_ALTERNATIVE")
+                return (8000.0, "SIMILAR_ALTERNATIVE")
 
         # Check reverse curated alternatives (e.g. target is 'masscan', matches 'nmap')
         for prime, alts in CYBER_TOOL_ALTERNATIVES.items():
             if prime == name and target in alts:
-                return (8500.0, "CURATED_ALTERNATIVE")
+                return (12000.0, "CURATED_ALTERNATIVE")
 
-        # 4. Direct Substring in tool name
-        if target in name:
-            return (5000.0, "NAME_SUBSTRING")
+        # 4. Word boundary match in tool name or repository slug
+        if re.search(r'\b' + re.escape(target) + r'\b', name) or f"/{target}" in repo_url:
+            return (6000.0, "NAME_SUBSTRING")
 
-        # 5. Direct Substring in repository URL
-        if f"/{target}" in repo_url:
-            return (4000.0, "REPO_MATCH")
-
-        # 6. Mentioned in purpose / capabilities (e.g. wrapper or GUI for that tool)
+        # 5. Mentioned in purpose / capabilities (e.g. wrapper, parser or client for that tool)
         if re.search(r'\b' + re.escape(target) + r'\b', full_text):
             return (2200.0, "CAPABILITY_PEER")
 
@@ -534,8 +528,10 @@ class PersistentSearchIntelligence:
 # ----------------------------------------------------
 
 CYBER_TOOL_ALTERNATIVES: Dict[str, List[str]] = {
-    # Network Scanning & Host Discovery
-    "nmap": ["masscan", "rustscan", "naabu", "zmap", "unicornscan", "zenmap"],
+    # Network Scanning, Attack Surface & IP Reconnaissance
+    "nrich": ["shodan", "naabu", "masscan", "rustscan", "nmap", "cvemap"],
+    "shodan": ["nrich", "censys", "zoomeye", "fofa"],
+    "nmap": ["masscan", "rustscan", "naabu", "zmap", "nrich", "unicornscan", "zenmap"],
     "masscan": ["nmap", "rustscan", "naabu", "zmap"],
     "rustscan": ["nmap", "masscan", "naabu"],
     "naabu": ["nmap", "rustscan", "masscan"],

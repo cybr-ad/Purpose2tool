@@ -222,8 +222,10 @@
 
   // Curated Alternatives & Functional Peers Radar Matrix
   const CYBER_TOOL_ALTERNATIVES = {
-    // Network Scanning & Host Discovery
-    "nmap": ["masscan", "rustscan", "naabu", "zmap", "unicornscan", "zenmap"],
+    // Network Scanning, Attack Surface & Host Discovery
+    "nrich": ["shodan", "naabu", "masscan", "rustscan", "nmap", "cvemap"],
+    "shodan": ["nrich", "censys", "zoomeye", "fofa"],
+    "nmap": ["masscan", "rustscan", "naabu", "zmap", "nrich", "unicornscan", "zenmap"],
     "masscan": ["nmap", "rustscan", "naabu", "zmap"],
     "rustscan": ["nmap", "masscan", "naabu"],
     "naabu": ["nmap", "rustscan", "masscan"],
@@ -327,21 +329,23 @@
 
   function scoreToolSimilarityClient(tool, targetName) {
     if (!targetName) return { score: 0, type: 'NONE' };
-    const target = targetName.toLowerCase().trim();
+    const target = targetName.replace(/^["'`\s]+|["'`\s]+$/g, '').toLowerCase().trim();
+    if (!target) return { score: 0, type: 'NONE' };
+
     const name = (tool.name || '').toLowerCase().trim();
     const repoUrl = (tool.repo_url || '').toLowerCase().trim();
     const category = (tool.category || '').toLowerCase().trim();
     const purpose = (tool.purpose_summary || '').toLowerCase().trim();
     const fullText = `${name} ${(tool.tagline || '').toLowerCase()} ${purpose} ${category} ${repoUrl}`;
 
-    // 1. Exact Name Match
+    // 1. Exact Name Match (Guaranteed Highest Rank)
     if (name === target || repoUrl.endsWith('/' + target) || repoUrl.includes('/' + target + '.')) {
-      return { score: 18000, type: 'EXACT_MATCH' };
+      return { score: 50000, type: 'EXACT_MATCH' };
     }
 
     // 2. Derivative / Ecosystem tool
     if (name.startsWith(target + '-') || name.startsWith(target + '_') || name.endsWith('-' + target)) {
-      return { score: 10000, type: 'DERIVATIVE' };
+      return { score: 15000, type: 'DERIVATIVE' };
     }
 
     // 3. Known Curated Alternatives
@@ -349,32 +353,32 @@
     for (const alt of curatedAlts) {
       const altClean = alt.toLowerCase();
       if (name === altClean || repoUrl.endsWith('/' + altClean) || repoUrl.includes('/' + altClean + '.')) {
-        return { score: 8500, type: 'CURATED_ALTERNATIVE' };
+        return { score: 12000, type: 'CURATED_ALTERNATIVE' };
       } else if (name.includes(altClean)) {
-        return { score: 6000, type: 'SIMILAR_ALTERNATIVE' };
+        return { score: 8000, type: 'SIMILAR_ALTERNATIVE' };
       }
     }
 
     // Reverse curated alternative
     for (const [prime, alts] of Object.entries(CYBER_TOOL_ALTERNATIVES)) {
       if (prime === name && alts.includes(target)) {
-        return { score: 8500, type: 'CURATED_ALTERNATIVE' };
+        return { score: 12000, type: 'CURATED_ALTERNATIVE' };
       }
     }
 
-    // 4. Substring in tool name
-    if (name.includes(target)) {
-      return { score: 5000, type: 'NAME_SUBSTRING' };
+    // 4. Word boundary match in tool name
+    const wordBoundaryRegex = new RegExp('\\b' + target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+    if (wordBoundaryRegex.test(name)) {
+      return { score: 6000, type: 'NAME_SUBSTRING' };
     }
 
-    // 5. Substring in repository URL
+    // 5. Direct Repository URL match
     if (repoUrl.includes('/' + target)) {
       return { score: 4000, type: 'REPO_MATCH' };
     }
 
     // 6. Mentioned in purpose / capabilities
-    const regex = new RegExp('\\b' + target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
-    if (regex.test(fullText)) {
+    if (wordBoundaryRegex.test(fullText)) {
       return { score: 2200, type: 'CAPABILITY_PEER' };
     }
 
@@ -1467,8 +1471,8 @@
         if (simScore > 0) {
           tool._similarityMatch = sim.type;
           tool._similarityTarget = tQ;
-        } else if (!pQ) {
-          return; // If ONLY tool was searched and this tool doesn't match/isn't similar, skip!
+        } else {
+          return; // If tool target does not match and has no similarity, DISQUALIFY completely!
         }
       }
 
@@ -1478,7 +1482,7 @@
         const isRfQuery = qLower.includes('radio') || qLower.includes(' rf') || qLower.startsWith('rf ') || qLower.includes('sdr') || qLower.includes('emf') || qLower.includes('tempest');
         if (isRfQuery) {
           const rfConcepts = ["radio", "rf", "sdr", "signal", "spectrum", "demodulat", "iq", "emf", "tempest", "frequency", "rtl-sdr", "hackrf", "gnuradio", "urh", "inspectrum", "gqrx", "satellite", "satnogs"];
-          const hasRf = rfConcepts.some(c => fullText.includes(c));
+          const hasRf = rfConcepts.some(c => new RegExp('\\b' + c.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&') + '\\b', 'i').test(fullText));
           if (!hasRf && (!tool._similarityMatch || tool._similarityMatch !== 'EXACT_MATCH')) {
             return; // Disqualified!
           }
@@ -1491,30 +1495,43 @@
         const tokens = expanded.tokens;
         const terms = expanded.expandedTerms;
 
-        // Exact substring
-        if (name.includes(pQ)) score += 300;
-        else if (purpose.includes(pQ)) score += 180;
+        const pQClean = pQ.replace(/^["'`\s]+|["'`\s]+$/g, '').trim().toLowerCase();
+        const pQRegex = new RegExp('\\b' + pQClean.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&') + '\\b', 'i');
 
-        // Multi-token match
+        // Exact name or word match
+        if (name === pQClean) score += 4000;
+        else if (pQRegex.test(name)) score += 1500;
+        else if (pQRegex.test(purpose)) score += 400;
+
+        // Multi-token match with strict word boundaries (prevents 'enricher' matching 'nrich')
         let tokensMatched = 0;
         tokens.forEach(tok => {
-          if (fullText.includes(tok)) tokensMatched++;
+          const tokClean = tok.replace(/^["'`\s]+|["'`\s]+$/g, '').trim().toLowerCase();
+          if (!tokClean) return;
+          const tokRegex = new RegExp('\\b' + tokClean.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&') + '\\b', 'i');
+          if (tokRegex.test(fullText)) tokensMatched++;
         });
 
         if (tokens.length > 1 && tokensMatched === tokens.length) {
-          score += 200;
+          score += 800;
         } else if (tokensMatched > 0) {
-          score += tokensMatched * 50;
+          score += tokensMatched * 150;
         }
 
-        // Token in name
+        // Token in name with strict word boundary
         tokens.forEach(tok => {
-          if (name.includes(tok)) score += 100;
+          const tokClean = tok.replace(/^["'`\s]+|["'`\s]+$/g, '').trim().toLowerCase();
+          if (!tokClean) return;
+          const tokRegex = new RegExp('\\b' + tokClean.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&') + '\\b', 'i');
+          if (tokRegex.test(name)) score += 200;
         });
 
-        // Expanded terms
+        // Expanded terms with boundary protection
         terms.forEach(term => {
-          if (fullText.includes(term)) score += 20;
+          if (term.length > 3) {
+            const termRegex = new RegExp('\\b' + term.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&') + '\\b', 'i');
+            if (termRegex.test(fullText)) score += 20;
+          }
         });
 
         // Popularity boost

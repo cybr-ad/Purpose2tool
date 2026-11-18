@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "total_queries_learned": 121,
+  "total_queries_learned": 135,
   "intents": {
     "radio forensic": {
       "query": "radio forensic",
@@ -78,9 +78,9 @@
         "tempest",
         "radio frequency"
       ],
-      "query_count": 21,
+      "query_count": 25,
       "learned_at": "2026-11-17T02:39:09.124782",
-      "last_accessed": "2026-11-17T13:29:32.279003",
+      "last_accessed": "2026-11-18T17:06:02.622250",
       "last_interaction": {
         "tool_id": "urh",
         "tool_name": "Universal Radio Hacker",
@@ -412,9 +412,9 @@
       "expanded_terms": [
         "nri"
       ],
-      "query_count": 2,
+      "query_count": 4,
       "learned_at": "2026-11-17T02:49:35.389824",
-      "last_accessed": "2026-11-17T02:49:50.058842"
+      "last_accessed": "2026-11-18T16:20:03.689868"
     },
     "nrich": {
       "query": "nrich",
@@ -434,9 +434,9 @@
       "expanded_terms": [
         "nrich"
       ],
-      "query_count": 7,
+      "query_count": 13,
       "learned_at": "2026-11-17T02:49:36.049423",
-      "last_accessed": "2026-11-17T13:32:47.449451",
+      "last_accessed": "2026-11-18T16:20:38.198413",
       "last_interaction": {
         "tool_id": "live_gl_87913186",
         "tool_name": "enrichment-lookup-coordinator",
@@ -2731,6 +2731,328 @@
         "tool_name": "crackmapexec-pingcastle",
         "timestamp": "2026-11-17T13:33:49.980811"
       }
+    },
+    "shnrich": {
+      "query": "shnrich",
+      "canonical_intent": "General Cybersecurity: Shnrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shnrich",
+      "mandatory_concepts": [
+        "shnrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shnrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:26.820175",
+      "last_accessed": "2026-11-18T16:19:26.820183"
+    },
+    "shonrich": {
+      "query": "shonrich",
+      "canonical_intent": "General Cybersecurity: Shonrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shonrich",
+      "mandatory_concepts": [
+        "shonrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shonrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:27.049000",
+      "last_accessed": "2026-11-18T16:19:27.049007"
+    },
+    "shownrich": {
+      "query": "shownrich",
+      "canonical_intent": "General Cybersecurity: Shownrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: shownrich",
+      "mandatory_concepts": [
+        "shownrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "shownrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:28.762300",
+      "last_accessed": "2026-11-18T16:19:28.762308"
+    },
+    "showdan nrich": {
+      "query": "showdan nrich",
+      "canonical_intent": "General Cybersecurity: Showdan Nrich",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: showdan nrich",
+      "mandatory_concepts": [
+        "showdan",
+        "nrich"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "showdan",
+        "nrich"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T16:19:30.065952",
+      "last_accessed": "2026-11-18T16:19:30.065958"
+    },
+    "radio forensics": {
+      "query": "radio forensics",
+      "canonical_intent": "Radio Frequency (RF), SDR & EMF Signal Forensics",
+      "domain": "RF_SDR_EMF",
+      "description": "Radio spectrum investigation, SDR demodulation, EMF/TEMPEST radiation eavesdropping, RF protocol reverse engineering.",
+      "mandatory_concepts": [
+        "radio",
+        "rf",
+        "sdr",
+        "signal",
+        "spectrum",
+        "demodulat",
+        "iq",
+        "emf",
+        "tempest",
+        "frequency",
+        "spectrogram",
+        "ism",
+        "baseband",
+        "telemetry",
+        "transceiver",
+        "rtl-sdr",
+        "hackrf",
+        "gnuradio",
+        "urh",
+        "inspectrum",
+        "gqrx",
+        "sdrangel",
+        "satellite"
+      ],
+      "reject_if_missing_mandatory": true,
+      "disqualify_penalty": 0.0,
+      "primary_tools": [
+        "urh",
+        "universal radio hacker",
+        "inspectrum",
+        "tempestsdr",
+        "sigdigger",
+        "sdrangel",
+        "gnuradio",
+        "gqrx",
+        "rtl_433",
+        "gr-gsm",
+        "proxmark3",
+        "dump1090",
+        "satnogs",
+        "satnogs-decoders",
+        "gr-satellites",
+        "fosphor",
+        "redsea",
+        "dsdcc",
+        "kalibrate-rtl",
+        "killerbee",
+        "hackrf"
+      ],
+      "expanded_terms": [
+        "software defined radio",
+        "electromagnetic",
+        "forensics",
+        "tempest",
+        "radio frequency",
+        "wireless protocol",
+        "leakage",
+        "fsk",
+        "ask",
+        "radio",
+        "spectrogram",
+        "ism band",
+        "demodulation",
+        "waterfall",
+        "psk",
+        "iq captures",
+        "sdr",
+        "eavesdropping",
+        "rf reverse engineering"
+      ],
+      "query_count": 6,
+      "learned_at": "2026-11-18T16:50:06.584316",
+      "last_accessed": "2026-11-18T17:07:43.291163"
+    },
+    "bbot": {
+      "query": "bbot",
+      "canonical_intent": "General Cybersecurity: Bbot",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: bbot",
+      "mandatory_concepts": [
+        "bbot"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "bbot"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-18T17:18:16.559977",
+      "last_accessed": "2026-11-18T17:18:18.413300"
+    },
+    "aut": {
+      "query": "aut",
+      "canonical_intent": "General Cybersecurity: Aut",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: aut",
+      "mandatory_concepts": [
+        "aut"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "aut"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:30.952650",
+      "last_accessed": "2026-11-18T17:18:30.952657"
+    },
+    "auto": {
+      "query": "auto",
+      "canonical_intent": "General Cybersecurity: Auto",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: auto",
+      "mandatory_concepts": [
+        "auto"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "auto"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:31.231929",
+      "last_accessed": "2026-11-18T17:18:31.231936"
+    },
+    "automa": {
+      "query": "automa",
+      "canonical_intent": "General Cybersecurity: Automa",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automa",
+      "mandatory_concepts": [
+        "automa"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automa"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:31.815813",
+      "last_accessed": "2026-11-18T17:18:31.815825"
+    },
+    "automat": {
+      "query": "automat",
+      "canonical_intent": "General Cybersecurity: Automat",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automat",
+      "mandatory_concepts": [
+        "automat"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automat"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:32.024190",
+      "last_accessed": "2026-11-18T17:18:32.024197"
+    },
+    "automated": {
+      "query": "automated",
+      "canonical_intent": "General Cybersecurity: Automated",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated",
+      "mandatory_concepts": [
+        "automated"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:32.493845",
+      "last_accessed": "2026-11-18T17:18:32.493855"
+    },
+    "automated vap": {
+      "query": "automated vap",
+      "canonical_intent": "General Cybersecurity: Automated Vap",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vap",
+      "mandatory_concepts": [
+        "automated",
+        "vap"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vap"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:35.817957",
+      "last_accessed": "2026-11-18T17:18:35.817966"
+    },
+    "automated vapy": {
+      "query": "automated vapy",
+      "canonical_intent": "General Cybersecurity: Automated Vapy",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vapy",
+      "mandatory_concepts": [
+        "automated",
+        "vapy"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vapy"
+      ],
+      "query_count": 1,
+      "learned_at": "2026-11-18T17:18:35.944916",
+      "last_accessed": "2026-11-18T17:18:35.944921"
+    },
+    "automated vapt": {
+      "query": "automated vapt",
+      "canonical_intent": "General Cybersecurity: Automated Vapt",
+      "domain": "GENERAL",
+      "description": "Targeted discovery for operational tool: automated vapt",
+      "mandatory_concepts": [
+        "automated",
+        "vapt"
+      ],
+      "reject_if_missing_mandatory": false,
+      "disqualify_penalty": 1.0,
+      "primary_tools": [],
+      "expanded_terms": [
+        "automated",
+        "vapt"
+      ],
+      "query_count": 2,
+      "learned_at": "2026-11-18T17:18:36.544965",
+      "last_accessed": "2026-11-18T17:19:56.962979"
     }
   }
 }
